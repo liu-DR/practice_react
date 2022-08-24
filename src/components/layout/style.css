@@ -1,0 +1,14 @@
+:global .ant-layout {
+  height: inherit;
+}
+:global .ant-layout-content {
+  background: #fff;
+  padding: 0;
+  margin: 24px;
+}
+:global .ant-layout .ant-menu-inline {
+  border: 0;
+}
+:global .ant-layout .ant-menu-sub.ant-menu-inline {
+  background: #fff;
+}

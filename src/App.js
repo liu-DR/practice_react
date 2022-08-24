@@ -1,24 +1,22 @@
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css'
+import { Provider } from 'react-redux'
+import {
+  BrowserRouter as Router
+} from 'react-router-dom'
+import store from '../src/modals/index'
+import Layout from '../src/components/layout/Layout'
+import 'antd/dist/antd.css';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <Provider store={store}>
+        <Layout />
+      </Provider>
+    </Router>
+  )
 }
 
 export default App;

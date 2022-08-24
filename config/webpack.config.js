@@ -69,6 +69,8 @@ const swSrc = paths.swSrc;
 // style files regexes
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
+const lessRegex = /\.less$/;
+const lessModuleRegex = /\.module\.less$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
 
@@ -500,6 +502,31 @@ module.exports = function (webpackEnv) {
                   getLocalIdent: getCSSModuleLocalIdent,
                 },
               }),
+            },
+            {
+              test: lessRegex,
+              exclude: lessModuleRegex,
+              use: getStyleLoaders(
+                  {
+                      importLoaders: 3,
+                      modules: true,
+                      sourceMap: isEnvProduction && shouldUseSourceMap,
+                  },
+                  'less-loader'
+              ),
+              sideEffects: true,
+            },
+            {
+              test: lessModuleRegex,
+              use: getStyleLoaders(
+                  {
+                      importLoaders: 3,
+                      sourceMap: isEnvProduction && shouldUseSourceMap,
+                      modules: true,
+                      getLocalIdent: getCSSModuleLocalIdent,
+                  },
+                  'less-loader'
+              )
             },
             // Opt-in support for SASS (using .scss or .sass extensions).
             // By default we support SASS Modules with the
