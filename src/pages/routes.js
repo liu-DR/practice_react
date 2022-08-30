@@ -1,12 +1,13 @@
 import loadable from '@loadable/component'
 import {
     HomeOutlined,
-    UploadOutlined,
+    ProfileOutlined,
     UserOutlined,
     VideoCameraOutlined,
 } from '@ant-design/icons';
 
 const Home = loadable(() => import('../pages/Home'))
+const MattersList = loadable(() => import('../pages/mattersList'))
 
 export default [
     {
@@ -17,21 +18,21 @@ export default [
             {
                 key: 'homeItem',
                 label: '首页1',
-                path: '/home',
+                path: '/',
                 element: <Home />,
             },
         ]
     },
     {
-        key: 'workbench',
-        label: '工作台',
-        icon: <UserOutlined />,
+        key: 'matters',
+        label: '事项清单',
+        icon: <ProfileOutlined />,
         children: [
             {
-                key: 'workbenchItem',
-                label: '工作台1',
-                path: '/home',
-                element: <Home />,
+                key: 'mattersList',
+                label: '代办事项',
+                path: '/mattersList',
+                element: <MattersList />,
             },
         ]
     },

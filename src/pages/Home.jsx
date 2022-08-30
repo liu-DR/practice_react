@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import {
     Button
 } from 'antd'
@@ -19,10 +20,20 @@ class Home extends React.Component{
 
         return(
             <div>
-                <Button>首页</Button>
+                <Button>前往待办事项清单</Button>
             </div>
         )
     }
 }
 
-export default Home
+
+const mapStateToProps = (state, props) => {
+
+    return {
+        ...props
+    }
+}
+
+export default connect(mapStateToProps,{
+
+})(Home)

@@ -1,28 +1,28 @@
-// import { combineReducers, applyMiddleware } from "redux";
-// import { legacy_createStore as createStore} from 'redux'
-// import thunk from "redux-thunk";
+import { combineReducers, applyMiddleware } from "redux";
+import { legacy_createStore as createStore} from 'redux'
+import thunk from "redux-thunk";
 
-// import storeModal from "./storeModal";
-// console.log(storeModal,'storeModal');
+import AvatarActionModal from './actionApi/avatarActions'
 
-// const rootReducer = combineReducers({
-//     ...storeModal['storeReducers'],
-// })
-
-// export default createStore(rootReducer, applyMiddleware(thunk))
-
-
-import { configureStore } from '@reduxjs/toolkit'
-import thunk from 'redux-thunk'
-
-const store = configureStore({
-  reducer: {
-    // reducer
-  },
-  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(thunk)
+const rootReducer = combineReducers({
+  ...AvatarActionModal.reducer,
 })
 
-export default store
+export default createStore(rootReducer, applyMiddleware(thunk))
+
+
+// import { configureStore } from '@reduxjs/toolkit'
+// import thunk from 'redux-thunk'
+// import AvatarActionModal from './actionApi/avatarActions'
+
+// const store = configureStore({
+//   reducer: {
+//     ...AvatarActionModal.reducer,
+//   },
+//   middleware: getDefaultMiddleware => getDefaultMiddleware().concat(thunk)
+// })
+
+// export default store
 
 // // Infer the `RootState` and `AppDispatch` types from the store itself
 // export type RootState = ReturnType<typeof store.getState>

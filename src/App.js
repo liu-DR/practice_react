@@ -2,7 +2,7 @@ import './App.css';
 import 'react-toastify/dist/ReactToastify.css'
 import { Provider } from 'react-redux'
 import {
-  BrowserRouter as Router
+  HashRouter as Router
 } from 'react-router-dom'
 import store from '../src/modals/index'
 import Layout from '../src/components/layout/Layout'
@@ -13,7 +13,7 @@ function App() {
   return (
     <Router>
       <Provider store={store}>
-        <Layout />
+        <Layout/>
       </Provider>
     </Router>
   )

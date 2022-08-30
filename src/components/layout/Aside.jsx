@@ -3,12 +3,11 @@ import { Link, Router } from "react-router-dom";
 import { Menu } from "antd";
 import routes from '../../pages/routes'
 import './style.less'
-import { ArrowRightOutlined } from "@ant-design/icons";
 
 const { SubMenu } = Menu
 
 const Asider = () => {
-    const [openKey, setOpenKey] = useState([])
+    const [openKey, setOpenKey] = useState(['home'])
 
     return (
         <div className='layout_Aside'>
@@ -17,6 +16,7 @@ const Asider = () => {
                 theme= 'light'
                 openKeys={openKey}
                 onOpenChange={arr=>setOpenKey([arr[arr.length -1]])}
+                defaultSelectedKeys={['homeItem']}
             >
                 {routes.map(item => (
                     item.children ? <SubMenu

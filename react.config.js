@@ -7,14 +7,12 @@ module.exports = {
     port: 8050,
     // host: 'localhost',
     resolve: {
-        // 绝对路径@
-        alias: {
-            "@": path.resolve(__dirname, "src"),
-        },
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
     },
     // 代理配置
-    proxy: {},
+    proxy: {
+        
+    },
     // 自定义loader规则
     rules: [],
     plugins: [],
