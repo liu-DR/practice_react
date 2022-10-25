@@ -10,9 +10,7 @@ class Home extends React.Component{
 
     }
 
-    async componentDidMount(){
-
-    }
+    async componentDidMount(){}
 
     render(){
         const {} = this.props
