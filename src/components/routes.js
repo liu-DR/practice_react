@@ -10,6 +10,9 @@ import {
 const Layout = loadable(() => import('./layouts/Layout'))
 const Home = loadable(() => import('../pages/Home'))
 
+// assembly
+import Guide from '@/pages/assembly/guide/Guide'
+
 const routes = [
     {
         element: <Layout />,
@@ -34,7 +37,7 @@ const routes = [
         children: [
             {
                 path: '/assembly/guide',
-                element: <Home />,
+                element: <Guide />,
                 title: '引导页',
                 key: 'guide',
                 meta:{}

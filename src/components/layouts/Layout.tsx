@@ -10,10 +10,6 @@ const LayoutIndex = (props) => {
     const [collapsed, setCollapsed] = useState<boolean>(false)
     const { Sider, Content, Header } = Layout
 
-    // useEffect(() => {
-    //     // console.log('1111111111111111')
-    // },[])
-
     const onCollapse = () => {
         setCollapsed(!collapsed)
     }

@@ -1,27 +1,20 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { connect } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import {
     Button
 } from 'antd'
 
+const Home = (props) => {
+    const navigate = useNavigate()
 
-class Home extends React.Component{
-    state = {
 
-    }
-
-    async componentDidMount(){}
-
-    render(){
-        const {} = this.props
-        const {} = this.state
-
-        return(
-            <div>
-                <Button>前往待办事项清单</Button>
-            </div>
-        )
-    }
+    return(
+        <div>
+            <h2>首页</h2>
+            <Button onClick={() => navigate('/assembly/guide')}>前往Guide组件</Button>
+        </div>
+    )
 }
 
 

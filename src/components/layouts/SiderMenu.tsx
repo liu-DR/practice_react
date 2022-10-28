@@ -21,14 +21,6 @@ const SiderMenu = (props) => {
 
     const navigate = useNavigate()
 
-    // 	刷新页面当前菜单项高亮
-    useEffect(() => {
-        // console.log(pathname,'打印pathname')
-        onClick({keyPath: [pathname]})
-        setOpenKey([pathname.split('/')[1]])
-        setKeys([pathname])
-    },[pathname])
-
     useEffect(() => {
         deep(routes)
     },[])
@@ -36,6 +28,14 @@ const SiderMenu = (props) => {
     useEffect(() => {
         getMenuList()
     },[])
+
+    // 	刷新页面当前菜单项高亮
+    useEffect(() => {
+        // console.log(pathname,'打印pathname')
+        onClick({keyPath: [pathname]})
+        setOpenKey([pathname.split('/')[1]])
+        setKeys([pathname])
+    },[pathname])
 
     const getMenuList = () => {
         setMenuList(deep(routes))
@@ -50,10 +50,9 @@ const SiderMenu = (props) => {
             setOpenKey(openKeys)
         }
     }
-
+    // 点击菜单项展示对应页面
     const onClick = ({keyPath}) => {
         // console.log(keyPath,'keyPath22222');
-        
         if(keyPath?.length){
             navigate(keyPath[0])
             setKeys([keyPath[0]])
@@ -89,13 +88,11 @@ const SiderMenu = (props) => {
                     return newArr.push(getItem(menu?.title, menu?.path, menu?.icon))
                 }
             }else{
-                console.log(menu.children,'menu.children')
                 newArr.push(getItem(menu?.meta?.title, menu?.meta?.key, menu?.meta?.icon, deep(menu.children)))
             }
         })
         return newArr
     }
-
 
     return (
         <div>

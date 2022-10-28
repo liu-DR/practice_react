@@ -1,38 +1,16 @@
-import React, { Component, useEffect } from 'react'
+import React, {useEffect, useState} from 'react'
 import { connect } from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {
     Button
 } from 'antd'
-import * as Icons from "@ant-design/icons";
 
-// class Login extends Component {
-//     state = {
-
-//     }
-//     async componentDidMount(){
-
-//     }
-
-//     render(){
-//         const {} = this.props
-//         const {} = this.state
-
-//         return (
-//             <div>登录</div>
-//         )
-//     }
-// }
 
 const Login = () => {
     const navigate = useNavigate()
 
     const onClick = () => {
-        console.log('1111111111111');
-        navigate('/home', {
-            replace: false,
-            state: {a:1, b:2}
-        })
+        navigate('/home')
     }
 
     return (
