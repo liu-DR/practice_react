@@ -7,12 +7,13 @@ import {
 } from '@ant-design/icons';
 
 
-const Layout = loadable(() => import('./Index'))
+const Layout = loadable(() => import('./layouts/Layout'))
 const Home = loadable(() => import('../pages/Home'))
 
 const routes = [
     {
         element: <Layout />,
+        meta: {},
         children: [
             {
                 path: '/home',
@@ -24,15 +25,19 @@ const routes = [
         ] 
     },
     {
-        title: '常用组件',
         element: <Layout />,
+        meta: {
+            title: '常用组件',
+            key: 'assembly',
+            icon: <ProfileOutlined />
+        },
         children: [
             {
                 path: '/assembly/guide',
                 element: <Home />,
                 title: '引导页',
                 key: 'guide',
-                icon: <ProfileOutlined />
+                meta:{}
             },
 
         ]

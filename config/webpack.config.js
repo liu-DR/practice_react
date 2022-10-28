@@ -70,7 +70,7 @@ const swSrc = paths.swSrc;
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 const lessRegex = /\.less$/;
-const lessModuleRegex = /\.module\.less$/;
+const lessModuleRegex = /\.less$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
 
@@ -504,7 +504,7 @@ module.exports = function (webpackEnv) {
                   : isEnvDevelopment,
                 modules: {
                   mode: 'local',
-                  getLocalIdent: getCSSModuleLocalIdent,
+                  // getLocalIdent: getCSSModuleLocalIdent,
                 },
               }),
             },
@@ -513,7 +513,7 @@ module.exports = function (webpackEnv) {
               exclude: lessModuleRegex,
               use: getStyleLoaders(
                   {
-                      importLoaders: 3,
+                      importLoaders: 2,
                       modules: true,
                       sourceMap: isEnvProduction && shouldUseSourceMap,
                   },
@@ -525,10 +525,10 @@ module.exports = function (webpackEnv) {
               test: lessModuleRegex,
               use: getStyleLoaders(
                   {
-                      importLoaders: 3,
+                      importLoaders: 2,
                       sourceMap: isEnvProduction && shouldUseSourceMap,
                       modules: true,
-                      getLocalIdent: getCSSModuleLocalIdent,
+                      // getLocalIdent: getCSSModuleLocalIdent,
                   },
                   'less-loader'
               )
@@ -569,7 +569,7 @@ module.exports = function (webpackEnv) {
                     : isEnvDevelopment,
                   modules: {
                     mode: 'local',
-                    getLocalIdent: getCSSModuleLocalIdent,
+                    // getLocalIdent: getCSSModuleLocalIdent,
                   },
                 },
                 'sass-loader'

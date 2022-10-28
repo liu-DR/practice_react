@@ -25,6 +25,6 @@
         "@/*": ["src/*"]
       },
     },
-    "include": ["**/*.ts", "**/*.tsx"],
+    "include": ["**/*.ts", "**/*.tsx", "src/components/layouts/Layout.jsx"],
     "exclude": ["node_modules"]
   }

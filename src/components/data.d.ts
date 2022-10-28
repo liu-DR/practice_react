@@ -1,8 +1,9 @@
 export interface MetaProps {
 	keepAlive?: boolean;
 	requiresAuth?: boolean;
-	title: string;
+	title?: string;
 	key?: string;
+	icon?: React.ReactNode;
 }
 
 export interface RouteObject {
@@ -11,7 +12,8 @@ export interface RouteObject {
 	element?: React.ReactNode;
 	index?: boolean;
 	path?: string;
-	// meta?: MetaProps;
+	meta?: MetaProps;
 	isLink?: string;
 	key?: string,
+	icon?: React.ReactNode;
 }

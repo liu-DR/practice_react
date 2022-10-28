@@ -1,6 +1,5 @@
 import { Navigate, useRoutes } from "react-router-dom";
 import Login from './login/Login'
-import Index from './Index'
 import route from './routes'
 import { RouteObject } from './data'
 import React from "react";
@@ -16,7 +15,7 @@ const rootRouter: RouteObject[] = [
         element: <Login />,
         key: 'login'
     },
-    ...route,
+    ...route
 ]
 
 const Route = () => {
