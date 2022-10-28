@@ -1,21 +1,23 @@
-import './App.css';
+import React, { useState } from 'react'
 import 'react-toastify/dist/ReactToastify.css'
 import { Provider } from 'react-redux'
 import {
-  HashRouter as Router
+  HashRouter,
+  useLocation
 } from 'react-router-dom'
-import store from '../src/modals/index'
-import Layout from '../src/components/layout/Layout'
+import store from './modals/index'
 import 'antd/dist/antd.css';
+import Route from './components/Authority.tsx'
+
 
 function App() {
 
   return (
-    <Router>
+    <HashRouter>
       <Provider store={store}>
-        <Layout/>
+          <Route/>
       </Provider>
-    </Router>
+    </HashRouter>
   )
 }
 
