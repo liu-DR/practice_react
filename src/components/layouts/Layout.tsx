@@ -19,7 +19,7 @@ const LayoutIndex = (props) => {
             <Header className={styles.layoutHeader}>这是头部</Header>
             <Layout>
                 <Sider collapsible theme='light' width={220} collapsed={collapsed} onCollapse={onCollapse} className={styles.layoutSider}>
-                    <SiderMenu />
+                    <SiderMenu collapsed={collapsed}/>
                 </Sider>
                 <Content className={styles.layoutContent}>
                     <Outlet />

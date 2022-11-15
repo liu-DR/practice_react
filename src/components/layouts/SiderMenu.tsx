@@ -15,6 +15,7 @@ import {
 
 const SiderMenu = (props) => {
     const {pathname} = useLocation()
+    const {collapsed} = props
     const [menuList, setMenuList] = useState<MenuItem[]>([])
     const [keys, setKeys] = useState<string[]>([pathname])
     const [openKey, setOpenKey] = useState<string[]>([])
@@ -35,7 +36,7 @@ const SiderMenu = (props) => {
         onClick({keyPath: [pathname]})
         setOpenKey([pathname.split('/')[1]])
         setKeys([pathname])
-    },[pathname])
+    },[pathname,collapsed])
 
     const getMenuList = () => {
         setMenuList(deep(routes))
@@ -43,7 +44,6 @@ const SiderMenu = (props) => {
 
     // 只有一个展开菜单项
     const onOpenChange = (openKeys: string[]) => {
-        // console.log(openKeys,'openKeys111111')
         if(openKeys?.length > 1){
             setOpenKey(openKeys.slice(0))
         }else{
@@ -52,7 +52,6 @@ const SiderMenu = (props) => {
     }
     // 点击菜单项展示对应页面
     const onClick = ({keyPath}) => {
-        // console.log(keyPath,'keyPath22222');
         if(keyPath?.length){
             navigate(keyPath[0])
             setKeys([keyPath[0]])

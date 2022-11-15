@@ -2,14 +2,17 @@ import { combineReducers, applyMiddleware } from "redux";
 import { legacy_createStore as createStore} from 'redux'
 import thunk from "redux-thunk";
 
-import AvatarActionModal from './actionApi/avatarActions'
+import OpenSourceModels from './reducerModels/OpenSource/OpenSourceModels'
 
 const rootReducer = combineReducers({
-  ...AvatarActionModal.reducer,
+  ...OpenSourceModels.reducer,
 })
 
 export default createStore(rootReducer, applyMiddleware(thunk))
 
+export const Modals = {
+  OpenSourceModels
+}
 
 // import { configureStore } from '@reduxjs/toolkit'
 // import thunk from 'redux-thunk'

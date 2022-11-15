@@ -1,15 +1,10 @@
-import axios from '../../utils/axios'
+import axios from '../../../utils/axios'
 
-// const initState = {
-//     imgs: null
-// }
-
-const AvatarActionModal = {
+const OpenSourceModels = {
     state: {
         AvatarImg: null
     },
     selectors: (state) => {
-        console.log(state,'state');
         const selectors = {
             getAvatarImg: () => state.AvatarImg
         }
@@ -30,7 +25,7 @@ const AvatarActionModal = {
     },
     actions: {
         GetAvatar: (params) => (dispatch) => {
-            return AvatarActionModal.apis.getAvatar(params).then(res => {
+            return OpenSourceModels.apis.getAvatar(params).then(res => {
                 dispatch({
                     type: 'GETAVATAR',
                     payload: res
@@ -40,7 +35,7 @@ const AvatarActionModal = {
         }
     },
     reducer: {
-        AvatarImg: (state = AvatarActionModal.state.AvatarImg, actions) => {
+        AvatarImg: (state = OpenSourceModels.state.AvatarImg, actions) => {
             const { type, payload } = actions
             switch (type) {
                 case 'GETAVATAR':
@@ -54,4 +49,4 @@ const AvatarActionModal = {
     }
 }
 
-export default AvatarActionModal
+export default OpenSourceModels
