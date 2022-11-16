@@ -3,11 +3,15 @@ import { connect } from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {
     Button,
-    Spin
+    Spin,
+    Input,
+    Row,
+    Col
 } from 'antd'
 import { Modals } from '@/modals/index'
 import styles from '../index.less'
 
+const {Password} = Input
 
 const Login = (props) => {
 
@@ -24,9 +28,18 @@ const Login = (props) => {
 
     return (
         <div className={styles.login}>
-            <h2>登录</h2>
-            <Button onClick={() => submit()}>点击登录</Button>
-            <Button onClick={() => signout()}>退出登录</Button>
+            <div className={styles.loginContnet}>
+                <h1>login</h1>
+                <Row>
+                    <Col span={24}>
+                        <Input placeholder='username' bordered={false}/>
+                    </Col>
+                    <Col span={24}>
+                        <Password placeholder='password' bordered={false}/>
+                    </Col>
+                </Row>
+                <Button>Login</Button>
+            </div>
         </div>
     )
 }

@@ -24,3 +24,35 @@
     width: 100px;
     height: 100px;
 }
+
+.login{
+    height: inherit;
+    background: linear-gradient(to right, rgb(251, 199, 212), rgb(151, 150, 240));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .loginContnet{
+        width: 350px;
+        height: 500px;
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 40px;
+        text-align: center;
+        :global{
+            .ant-input-borderless {
+                border-bottom: 1px solid #cccccc;
+            }
+            .ant-btn{
+                width: 270px;
+                background: linear-gradient(to right, rgb(151, 150, 240), rgb(251, 199, 212));
+            }
+            .ant-row .ant-col{
+                margin-bottom: 20px;
+            }
+
+            .ant-input-password {
+                border-bottom: 1px solid red;
+            }
+        }
+    }
+}
