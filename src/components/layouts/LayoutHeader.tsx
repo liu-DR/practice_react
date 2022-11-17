@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Modals } from '@/modals/index'
 import {useNavigate} from 'react-router-dom'
 import { Buffer } from 'buffer';
+import styles from '../index.less'
 
 
 
@@ -15,6 +16,7 @@ const LayoutHeader = (props) => {
         getHeadPortrait()
     },[])
 
+    // 头像转换处理
     const getHeadPortrait = async () => {
         const headImg = await GetAvatar(Math.round(Math.random() * 1000))
         console.log(headImg,'打印')
@@ -25,7 +27,7 @@ const LayoutHeader = (props) => {
     }
 
     return (
-        <div>
+        <div className={styles.layoutHeader}>
             <span>头部信息</span>
             <span>
                 <img src={`data:image/svg+xml;base64,${avater}`} alt="" />

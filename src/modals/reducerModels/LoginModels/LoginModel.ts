@@ -1,4 +1,5 @@
 import axios from '@/utils/axios'
+import { v4 as uuidv4 } from 'uuid'
 
 const LoginModel = {
     // 定义共享变量数据
@@ -23,8 +24,12 @@ const LoginModel = {
     actions: {
         loginActions: (params:{name:string, password: string}) => (dispatch:any) => {
             if(params.name === 'admin' && params.password === '123456'){
-                const token = `${new Date().getTime()}-${Math.random()*1000}`
-                localStorage.setItem('token',token)
+                const formation = JSON.stringify({
+                    token: uuidv4(),
+                    expira: Date.now(),
+                    userName: params.name
+                })
+                localStorage.setItem('formation',formation)
                 return true
             }else{
                 return false

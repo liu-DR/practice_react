@@ -17,7 +17,7 @@ const LayoutIndex = (props) => {
 
     return(
         <Layout className={styles.layout}>
-            <Header className={styles.layoutHeader}>
+            <Header>
                 <LayoutHeader />
             </Header>
             <Layout>

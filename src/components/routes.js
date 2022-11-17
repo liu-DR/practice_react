@@ -38,7 +38,7 @@ const routes = [
             {
                 path: '/assembly/guide',
                 element: <TableGuide />,
-                title: '引导页',
+                title: 'Table',
                 key: 'guide',
                 meta:{}
             },
