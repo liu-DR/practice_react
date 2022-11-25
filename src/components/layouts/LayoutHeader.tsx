@@ -3,6 +3,10 @@ import { connect } from 'react-redux'
 import { Modals } from '@/modals/index'
 import {useNavigate} from 'react-router-dom'
 import { Buffer } from 'buffer';
+import {
+    Spin,
+    Button
+} from 'antd'
 import styles from '../index.less'
 
 
@@ -28,10 +32,17 @@ const LayoutHeader = (props) => {
 
     return (
         <div className={styles.layoutHeader}>
-            <span>头部信息</span>
-            <span>
-                <img src={`data:image/svg+xml;base64,${avater}`} alt="" />
-            </span>
+            <div className={styles.headPortrait}>
+                <span>头部信息</span>
+                {avater ? <img src={`data:image/svg+xml;base64,${avater}`} alt="" /> : <Spin />}
+            </div>
+            <Button
+                onClick={() => {
+                    localStorage.clear()
+                    navigate('/login')
+                }}
+                type='primary'
+            >退出登录</Button>
         </div>
     )
 }

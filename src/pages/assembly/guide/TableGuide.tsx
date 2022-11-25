@@ -6,7 +6,7 @@ import {
     Table
 } from 'antd'
 import { columnsTableType } from '../data'
-import styles from '../assembly.less'
+import styles from './tableGuide.less'
 
 const data: columnsTableType[] = [
     {

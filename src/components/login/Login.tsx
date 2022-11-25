@@ -55,13 +55,26 @@ const Login = (props) => {
     // 登录
     const submit = async () => {
         const { loginActions } = props
-        const res = await loginActions({name:userName, password: password})
 
-        if(res){
-            message.success('登录成功')
-            navigate('/home')
+        if(!(userName && password)){
+            if(!userName && !password){
+                setNameDisplay('block')
+                setPassDisplay('block')
+            }else if(!userName){
+                setNameDisplay('block')
+            }else if(!password){
+                setPassDisplay('block')
+            }
+            return
         }else{
-            message.error('用户名或密码错误')
+            const res = await loginActions({name:userName, password: password})
+
+            if(res){
+                message.success('登录成功')
+                navigate('/home')
+            }else{
+                message.error('用户名或密码错误')
+            }
         }
     }
 
