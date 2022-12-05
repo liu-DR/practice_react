@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import { connect } from 'react-redux'
 import {
-    Tag
+    Tag,
+    Button,
+    Popover
 } from 'antd'
 
 const {CheckableTag} = Tag
@@ -10,6 +12,25 @@ const CheckTag = () => {
     const [selectedTag, setSelectedTag] = useState<Array<string>>([])
 
     useEffect(() => {
+        const num = {}
+        const data = [
+            {age: 11, total: 12, name: '1111'},
+            {age: 12, total: 11, name: '1111'},
+            {age: 21, total: 11, name: '1111'},
+            {age: 14, total: 11, name: '1111'},
+        ]
+
+        data.map(item => {
+            console.log(item,'111')
+            for(let key in item){
+                if(typeof(item[key]) === 'number'){
+                    num[key] = item[key] + (num[key] || 0)
+                }else{
+                    num[key] = item[key]
+                }
+            }
+        })
+        console.log(num,'num')
 
     },[])
 
@@ -63,6 +84,8 @@ const CheckTag = () => {
                     ))}
                 </div>
             ))}
+            <Popover trigger='click' placement='bottom' content='dadwawd '>点击此处添加标签</Popover>
+            <Button >点击此处添加标签</Button>
         </div>
     )
 }
