@@ -2,9 +2,9 @@ import loadable from '@loadable/component'
 import {
     HomeOutlined,
     ProfileOutlined,
-    UserOutlined,
-    VideoCameraOutlined,
-    ProjectOutlined
+    ProjectOutlined,
+    Html5Outlined,
+    BgColorsOutlined 
 } from '@ant-design/icons';
 
 
@@ -17,6 +17,12 @@ import CardForm from '@/pages/assembly/cardForm/CardForm'
 
 // 项目收支
 import ProjectBlance from '@/pages/project/projectBlance/ProjectBlance';
+
+// css样式功能
+import CssFunctionFile from '@/pages/cssFunctionFile'
+
+// html功能组件
+import HtmlFunctionTags from '@/pages/htmlFunctinoTag'
 
 const routes = [
     {
@@ -73,7 +79,43 @@ const routes = [
             },
 
         ]
-    }
+    },
+    {
+        element: <Layout />,
+        meta: {
+            title: 'css样式',
+            key: 'cssProject',
+            icon: <BgColorsOutlined  />
+        },
+        children: [
+            {
+                path: '/cssProject/cssStyle',
+                element: <CssFunctionFile />,
+                title: 'cssStyle',
+                key: 'cssStyle',
+                meta:{}
+            },
+
+        ]
+    },
+    {
+        element: <Layout />,
+        meta: {
+            title: 'html功能',
+            key: 'htmlProject',
+            icon: <Html5Outlined />
+        },
+        children: [
+            {
+                path: '/htmlProject/htmlTags',
+                element: <HtmlFunctionTags />,
+                title: 'html功能标签',
+                key: 'htmlTags',
+                meta:{}
+            },
+
+        ]
+    },
 ]
 
 export default routes

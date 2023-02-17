@@ -24,6 +24,22 @@ const CardForm = (props) => {
     },[])
 
     const showModel = () => {
+        const data = [
+            {age: 11, total: 10},
+            {age: 12, total: 11},
+            {age: 13, total: 12},
+        ]
+        let num = {}
+        
+        data.forEach(item => {
+            for(let key in item){
+                
+                console.log(typeof(num[key]),'num[key]')
+                num[key] = typeof(num[key]) === 'number' ? num[key]+item[key] : item[key]
+            }
+        })
+        console.log(num,'打印num')
+        return num
 
     }
 
@@ -31,8 +47,9 @@ const CardForm = (props) => {
         <div className={styles.CardForm}>
             <div className={styles.cardFormContent}>
                 <div>
-                    <Button onClick={() => setWhether(true)}>登记交易所反馈意见</Button>
+                    <Button onClick={() => showModel()}>登记交易所反馈意见</Button>
                 </div>
+                <Button>dwadwd</Button>
             </div>
 
 
