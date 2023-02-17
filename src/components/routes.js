@@ -14,6 +14,7 @@ const Home = loadable(() => import('../pages/Home'))
 // 常用组件
 import TableGuide from '@/pages/assembly/guide/TableGuide'
 import CardForm from '@/pages/assembly/cardForm/CardForm'
+import CheckTag from '@/pages/assembly/checkTag/CheckTag'
 
 // 项目收支
 import ProjectBlance from '@/pages/project/projectBlance/ProjectBlance';
@@ -58,6 +59,13 @@ const routes = [
                 element: <CardForm />,
                 title: '卡片表单',
                 key: 'cardForm',
+                meta:{}
+            },
+            {
+                path: '/assembly/checkTag',
+                element: <CheckTag />,
+                title: '标签Tags',
+                key: 'checkTag',
                 meta:{}
             }
         ]
