@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import 'react-toastify/dist/ReactToastify.css'
+import { Provider } from 'react-redux'
+import {
+  HashRouter,
+  useLocation
+} from 'react-router-dom'
+import store from './modals/index'
+import 'antd/dist/antd.css';
+import Route from './components/Authority.tsx'
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <HashRouter>
+      <Provider store={store}>
+          <Route/>
+      </Provider>
+    </HashRouter>
+  )
 }
 
 export default App;

@@ -1,0 +1,9 @@
+{
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+    // 防止less文件保存时生成一个新的css文件
+    "less.compile": {
+        "compress": false,
+        "sourceMap": false,
+        "out":false
+    }
+}
