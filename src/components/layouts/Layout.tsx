@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Outlet } from 'react-router-dom'
 import { Layout } from 'antd'
 import SiderMenu from './SiderMenu'
+import LayoutHeader from './LayoutHeader'
 import styles from '../index.less'
 
 
@@ -16,10 +17,12 @@ const LayoutIndex = (props) => {
 
     return(
         <Layout className={styles.layout}>
-            <Header className={styles.layoutHeader}>这是头部</Header>
+            <Header>
+                <LayoutHeader />
+            </Header>
             <Layout>
                 <Sider collapsible theme='light' width={220} collapsed={collapsed} onCollapse={onCollapse} className={styles.layoutSider}>
-                    <SiderMenu />
+                    <SiderMenu collapsed={collapsed}/>
                 </Sider>
                 <Content className={styles.layoutContent}>
                     <Outlet />

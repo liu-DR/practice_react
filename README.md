@@ -68,3 +68,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+* assets文件夹：存放本地资源
+* components文件夹：公共组件，layout布局文件，登录注册页面
+* modals文件夹：redux数据流文件，接口文件
+* pages文件夹：页面组件
+* utils文件夹：公共方法
+* service文件夹：连接数据库，配置接口地址文件

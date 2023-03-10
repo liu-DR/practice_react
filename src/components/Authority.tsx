@@ -19,7 +19,6 @@ const rootRouter: RouteObject[] = [
 ]
 
 const Route = () => {
-    console.log(route,'routerArray')
     const routes = useRoutes(rootRouter)
     return routes
 }
