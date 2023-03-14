@@ -23,7 +23,6 @@ const LayoutHeader = (props) => {
     // 头像转换处理
     const getHeadPortrait = async () => {
         const headImg = await GetAvatar(Math.round(Math.random() * 1000))
-        console.log(headImg,'打印')
         if(headImg){
             const buffer = new Buffer(headImg)
             setAvater(buffer.toString('base64'))
@@ -34,7 +33,11 @@ const LayoutHeader = (props) => {
         <div className={styles.layoutHeader}>
             <div className={styles.headPortrait}>
                 <span>头部信息</span>
-                {avater ? <img src={`data:image/svg+xml;base64,${avater}`} alt="" /> : <Spin />}
+                {avater
+                    ?
+                        <img src={`data:image/svg+xml;base64,${avater}`} alt="" />
+                    :   <span style={{ padding: '0 20px' }}><Spin /></span>
+                }
             </div>
             <Button
                 onClick={() => {

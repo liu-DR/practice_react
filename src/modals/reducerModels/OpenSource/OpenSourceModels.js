@@ -22,6 +22,12 @@ const OpenSourceModels = {
                 method: 'GET'
             })
         },
+        getCloudMusic: (params) => {
+            return axios({
+                url: `/cloud/top/playlist?limit=10&order=new`,
+                method: 'GET'
+            })
+        },
     },
     actions: {
         GetAvatar: (params) => (dispatch) => {
@@ -30,6 +36,16 @@ const OpenSourceModels = {
                     type: 'GETAVATAR',
                     payload: res
                 })
+                return res
+            })
+        },
+        GetCloudMusic: (params) => (dispatch) => {
+            return OpenSourceModels.apis.getCloudMusic().then(res => {
+                dispatch({
+                    type: 'GETCLOUDMUSIC',
+                    payload: res
+                })
+                console.log(res,'res')
                 return res
             })
         }

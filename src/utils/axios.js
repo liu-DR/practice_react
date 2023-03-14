@@ -1,11 +1,11 @@
 import axios from 'axios'
 import qs from 'qs'
 
-// let baseURL = 'http://localhost:3000'
+let baseURL = 'http://localhost:8085'
 
 // 创建实例
 const instance = axios.create({
-    // baseURL: baseURL,
+    baseURL: baseURL,
     timeout: 15000,  // 毫秒
 })
 
