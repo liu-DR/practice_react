@@ -26,6 +26,6 @@
       },
       "strictNullChecks":true // 开启严格模式，null 和 undefined 只能给它们自己的类型赋值
     },
-    "include": ["**/*.ts", "**/*.tsx", "src/components/layouts/Layout.jsx"],
+    "include": ["**/*.ts", "**/*.tsx", "**/*.jsx", "**/*.js"],
     "exclude": ["node_modules"]
   }

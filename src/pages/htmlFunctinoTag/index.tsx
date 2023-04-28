@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Select, Form } from 'antd'
+import GluttonousSnake from './GluttonousSnake'
 
 const data = [
     {title: '名称1', age: '12'},
@@ -17,6 +18,7 @@ const HtmlFunctionTags = () => {
             <br />
             <h2>循环下拉框组件</h2>
             <div>
+                <GluttonousSnake />
             </div>
         </div>
     )

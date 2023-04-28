@@ -9,6 +9,9 @@ import store from './modals/index'
 import 'antd/dist/antd.css';
 import Route from './components/Authority.tsx'
 
+// 引入富文本编辑器样式
+import 'braft-editor/dist/index.css'
+
 
 function App() {
 

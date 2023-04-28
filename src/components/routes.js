@@ -24,6 +24,7 @@ import CssFunctionFile from '@/pages/cssFunctionFile'
 
 // html功能组件
 import HtmlFunctionTags from '@/pages/htmlFunctinoTag'
+import BraftEditor from '@/pages/htmlFunctinoTag/components/BraftEditorComponent'
 
 const routes = [
     {
@@ -119,6 +120,13 @@ const routes = [
                 element: <HtmlFunctionTags />,
                 title: 'html功能标签',
                 key: 'htmlTags',
+                meta:{}
+            },
+            {
+                path: '/htmlProject/braft-editor',
+                element: <BraftEditor />,
+                title: '富文本编辑器',
+                key: 'braft-editor',
                 meta:{}
             },
 

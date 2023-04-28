@@ -76,3 +76,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 * pages文件夹：页面组件
 * utils文件夹：公共方法
 * service文件夹：连接数据库，配置接口地址文件
+
+
+- react-dnd：可拖拽改变组件位置
+- react-resizable：可拖拽改变组件大小
