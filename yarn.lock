@@ -3066,7 +3066,7 @@
 
 "braft-editor@^2.3.9":
   "integrity" "sha512-mqdPk/zI2dhFK8tW/A4Qj/AkkARLh5L/niNw+iif5wFqb6zh15rMlrShgz1nWO/QXyAKr8XtDgxiBbR0zWwtRg=="
-  "resolved" "https://registry.npmmirror.com/braft-editor/-/braft-editor-2.3.9.tgz"
+  "resolved" "https://registry.npmjs.org/braft-editor/-/braft-editor-2.3.9.tgz"
   "version" "2.3.9"
   dependencies:
     "@babel/runtime" "^7.0.0"
@@ -3461,7 +3461,7 @@
 
 "copy-anything@^2.0.1":
   "integrity" "sha512-1j20GZTsvKNkc4BY3NpMOM8tt///wY3FpIzozTOFO2ffuZcV61nojHXVKIy3WM+7ADCy5FVhdZYHYDdgTU0yJw=="
-  "resolved" "https://registry.npmmirror.com/copy-anything/-/copy-anything-2.0.6.tgz"
+  "resolved" "https://registry.npmjs.org/copy-anything/-/copy-anything-2.0.6.tgz"
   "version" "2.0.6"
   dependencies:
     "is-what" "^3.14.1"
@@ -7057,6 +7057,11 @@
   "integrity" "sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog=="
   "resolved" "https://registry.npmmirror.com/pify/-/pify-2.3.0.tgz"
   "version" "2.3.0"
+
+"pify@^4.0.1":
+  "integrity" "sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g=="
+  "resolved" "https://registry.npmjs.org/pify/-/pify-4.0.1.tgz"
+  "version" "4.0.1"
 
 "pirates@^4.0.4":
   "integrity" "sha512-8V9+HQPupnaXMA23c5hvl69zXvTwTzyAYasnkb0Tts4XvO4CliqONMOnvlq26rkhLC3nWDFBJf73LU1e1VZLaQ=="
