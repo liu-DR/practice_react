@@ -1,0 +1,27 @@
+.dataLoading{
+    opacity: 0.6;
+    cursor: no-drop;
+    pointer-events: none;
+    display: inline-block;
+}
+.dataLoading::before{
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-right: 0.5em;
+    color: currentColor;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    vertical-align: -10%;
+    clip-path: polygon(0% 0%, 100% 0%, 70% 30%, 0% 300%);
+    animation: rotate 1s linear infinite;
+}
+@keyframes rotate {
+    form {
+      transform: rotateZ(0deg);
+    }
+    to {
+      transform: rotateZ(360deg);
+    }
+}

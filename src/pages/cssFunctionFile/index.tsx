@@ -1,16 +1,20 @@
 import React from 'react'
-import './index.css'
+import { Card } from 'antd';
+import styles from './index.less'
 
 const CssFunctionFiles  = () => {
 
     return (
         <div>
-            <h2>css功能样式文件</h2>
-            <br />
-            <div style={{ padding: '0 20px' }}>
-                <h1>css添加loading效果</h1>
-                <span className='data-loading'>loading</span>
-            </div>
+            <Card title="loading效果">
+                <div style={{ padding: '0 20px' }}>
+                    <span
+                        className={styles.dataLoading}
+                   />
+                   <span>loading</span>
+                </div>
+            </Card>
+            
         </div>
     )
 }
