@@ -6,7 +6,7 @@ import {
   useLocation
 } from 'react-router-dom'
 import store from './modals/index'
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.min.css';
 import Route from './components/Authority.tsx'
 
 // 引入富文本编辑器样式

@@ -33,10 +33,10 @@ const LayoutHeader = (props) => {
         <div className={styles.layoutHeader}>
             <div className={styles.headPortrait}>
                 <span>头部信息</span>
-                {avater
+                {false
                     ?
                         <img src={`data:image/svg+xml;base64,${avater}`} alt="" />
-                    :   <span style={{ padding: '0 20px' }}><Spin /></span>
+                    :   <div style={{ padding: '0 20px', height: 'inherit', lineHeight: '52px' }}><Spin /></div>
                 }
             </div>
             <Button

@@ -16,15 +16,12 @@ import TableGuide from '@/pages/assembly/guide/TableGuide'
 import CardForm from '@/pages/assembly/cardForm/CardForm'
 import CheckTag from '@/pages/assembly/checkTag/CheckTag'
 
-// 项目收支
-import ProjectBlance from '@/pages/project/projectBlance/ProjectBlance';
-
 // css样式功能
 import CssFunctionFile from '@/pages/cssFunctionFile'
 
 // html功能组件
 import HtmlFunctionTags from '@/pages/htmlFunctinoTag'
-import BraftEditor from '@/pages/htmlFunctinoTag/components/BraftEditorComponent'
+import BraftEditor from '@/components/braftEditor/BraftEditorComponent'
 
 const routes = [
     {
@@ -68,25 +65,14 @@ const routes = [
                 title: '标签Tags',
                 key: 'checkTag',
                 meta:{}
-            }
-        ]
-    },
-    {
-        element: <Layout />,
-        meta: {
-            title: '项目',
-            key: 'project',
-            icon: <ProjectOutlined />
-        },
-        children: [
+            },
             {
-                path: '/project/blance',
-                element: <ProjectBlance />,
-                title: '项目收支',
-                key: 'blance',
+                path: '/assembly/braft-editor',
+                element: <BraftEditor />,
+                title: '富文本编辑器',
+                key: 'braft-editor',
                 meta:{}
             },
-
         ]
     },
     {
@@ -121,15 +107,7 @@ const routes = [
                 title: 'html功能标签',
                 key: 'htmlTags',
                 meta:{}
-            },
-            {
-                path: '/htmlProject/braft-editor',
-                element: <BraftEditor />,
-                title: '富文本编辑器',
-                key: 'braft-editor',
-                meta:{}
-            },
-
+            }
         ]
     },
 ]
