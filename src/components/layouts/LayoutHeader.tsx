@@ -15,8 +15,14 @@ const LayoutHeader = (props) => {
     const navigate = useNavigate()
     const { GetAvatar } = props
     const [avater,setAvater] = useState<string>('')
+    const [userName, setUserName] = useState<string>('')
 
     useEffect(() => {
+        // 获取当前登录用户名
+        const formation = JSON.parse(localStorage.getItem('formation') || '{}')
+        if(Object.keys(formation).length > 0){
+            setUserName(formation?.userName)
+        }
         getHeadPortrait()
     },[])
 
@@ -32,8 +38,8 @@ const LayoutHeader = (props) => {
     return (
         <div className={styles.layoutHeader}>
             <div className={styles.headPortrait}>
-                <span>头部信息</span>
-                {false
+                <span>{userName}</span>
+                {avater
                     ?
                         <img src={`data:image/svg+xml;base64,${avater}`} alt="" />
                     :   <div style={{ padding: '0 20px', height: 'inherit', lineHeight: '52px' }}><Spin /></div>
