@@ -63,21 +63,20 @@ class BreaftEditorComponent extends Component {
     }
 
     handleChange = (editorState) => {
+        const { onChange } = this.props
         if(!editorState.isEmpty()){
             console.log(editorState.toHTML(),'打印html')
-            this.setState({ editorState })
+            this.setState({ editorState }, () => onChange(editorState))
         }else{
             console.log(editorState,'打印')
         }
     }
 
     render(){
-        const {  } = this.props
         const { editorState, height } = this.state
 
         return (
             <div>
-                <p>富文本编辑器</p>
                 <div>
                     <BraftEditor
                         value={editorState}

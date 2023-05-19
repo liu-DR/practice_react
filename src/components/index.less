@@ -4,8 +4,37 @@
         .ant-layout-header{
             padding: 0 10px
         }
+        .ant-layout-has-sider{
+            position: relative;
+        }
+        .ant-layout-has-sider::before {
+            content: "watermark";
+            font-size: 40px;
+            color: rgba(0, 0, 0, 0.1);
+            position: absolute;
+            left: -100px;
+            top: -100px;
+            transform: rotate(-45deg);
+            opacity: 0.5;
+            z-index: 100;
+        }
+        .watermark::after {
+            content: "dawdawdwd";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+              45deg,
+              rgba(0, 0, 0, 0.05),
+              rgba(0, 0, 0, 0.05) 10px,
+              transparent 10px,
+              transparent 20px
+            );
+            pointer-events: none;
+        }
     }
 }
+
 
 .layoutHeader{
     color: #ffffff;
