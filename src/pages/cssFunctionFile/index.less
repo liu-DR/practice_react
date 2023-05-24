@@ -1,27 +1,37 @@
-.dataLoading{
-    opacity: 0.6;
-    cursor: no-drop;
-    pointer-events: none;
-    display: inline-block;
-}
-.dataLoading::before{
-    content: '';
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    margin-right: 0.5em;
-    color: currentColor;
-    border: 1px solid currentColor;
+.box1{
+    width: 100px;
+    height: 100px;
+    background: transparent;
+    border: 3px solid #95f887;
     border-radius: 50%;
-    vertical-align: -10%;
-    clip-path: polygon(0% 0%, 100% 0%, 70% 30%, 0% 300%);
-    animation: rotate 1s linear infinite;
+    position: relative;
+    /**
+    * round：动画名称
+    * 3s：完成一次动画的时间
+    * linear：使当前动画运动速度呈线性匀速运动
+    * infinite：动画无限循环
+    */
+    animation: round 3s infinite linear;
 }
-@keyframes rotate {
-    form {
-      transform: rotateZ(0deg);
+.box1::before{
+    content: "";
+    width: 15px;
+    height: 15px;
+    background: #ffd950;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+// 动画配置
+@keyframes round {
+    0% {
+        rotate: 0deg;   // 顺时针
+        // rotate: 360deg;  // 逆时针
     }
-    to {
-      transform: rotateZ(360deg);
+    100% {
+        // rotate: 0deg;
+        rotate: 360deg;
     }
 }

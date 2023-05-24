@@ -77,6 +77,7 @@ class BreaftEditorComponent extends Component {
 
         return (
             <div>
+                <p>braft-editor富文本编辑器</p>
                 <div>
                     <BraftEditor
                         value={editorState}

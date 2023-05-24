@@ -3461,7 +3461,7 @@
 
 "copy-anything@^2.0.1":
   "integrity" "sha512-1j20GZTsvKNkc4BY3NpMOM8tt///wY3FpIzozTOFO2ffuZcV61nojHXVKIy3WM+7ADCy5FVhdZYHYDdgTU0yJw=="
-  "resolved" "https://registry.npmjs.org/copy-anything/-/copy-anything-2.0.6.tgz"
+  "resolved" "https://registry.npmmirror.com/copy-anything/-/copy-anything-2.0.6.tgz"
   "version" "2.0.6"
   dependencies:
     "is-what" "^3.14.1"
@@ -5561,11 +5561,6 @@
   "resolved" "https://registry.npmmirror.com/is-what/-/is-what-3.14.1.tgz"
   "version" "3.14.1"
 
-"is-what@^4.1.8":
-  "integrity" "sha512-I3FU0rkVvwhgLLEs6iITwZ/JaLXe7tQcHyzupXky8jigt1vu4KM0UOqDr963j36JRvJ835EATVIm6MnGz/i1/g=="
-  "resolved" "https://registry.npmmirror.com/is-what/-/is-what-4.1.9.tgz"
-  "version" "4.1.9"
-
 "is-wsl@^2.2.0":
   "integrity" "sha512-fKzAra0rGJUUBwGBgNkHZuToZcn+TtXHpeCgmkMJMMYx1sQDYaCSyjJBSCa2nH1DGm7s3n1oBnohoVTBaN7Lww=="
   "resolved" "https://registry.npmmirror.com/is-wsl/-/is-wsl-2.2.0.tgz"
@@ -6289,6 +6284,11 @@
   "resolved" "https://registry.npmmirror.com/kind-of/-/kind-of-6.0.3.tgz"
   "version" "6.0.3"
 
+"kindeditor@^4.1.10":
+  "integrity" "sha512-tZb3OJ+XqGUfnQJNtOZqfc+PJ45I+ciNowjEB1lTVrOBCYXzoLA0l/W1cBEm0ihuDuyq5FFiG8hFsX/PPW6AIg=="
+  "resolved" "https://registry.npmmirror.com/kindeditor/-/kindeditor-4.1.10.tgz"
+  "version" "4.1.10"
+
 "kleur@^3.0.3":
   "integrity" "sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w=="
   "resolved" "https://registry.npmmirror.com/kleur/-/kleur-3.0.3.tgz"
@@ -6979,6 +6979,11 @@
   "integrity" "sha512-3YHlOa/JgH6Mnpr05jP9eDG254US9ek25LyIxZlDItp2iJtwyaXQb57lBYLdT3MowkUFYEV2XXNAYIPlESvJlA=="
   "resolved" "https://registry.npmmirror.com/parse-node-version/-/parse-node-version-1.0.1.tgz"
   "version" "1.0.1"
+
+"parse-node-version@^2.0.0":
+  "integrity" "sha512-/jc2J3E6IazoQF4RlwJg4E4FByHqXlcoaHVrWQvjr7LEQd8QVLBT3AO5dqZlFPIzluYUosVTLAM0t8OTEc2AdQ=="
+  "resolved" "https://registry.npmmirror.com/parse-node-version/-/parse-node-version-2.0.0.tgz"
+  "version" "2.0.0"
 
 "parse5@6.0.1":
   "integrity" "sha512-Ofn/CTFzRGTTxwpNEs9PP93gXShHcTq255nzRYSKe8AkVpZY7e1fpmTfOyoIvjP5HG7Z2ZM7VS9PPhQGW2pOpw=="
