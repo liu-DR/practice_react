@@ -38,7 +38,7 @@ const LoginModel = {
     },
 
     // reducer
-    reducers: {
+    reducer: {
 
     }
 

@@ -1,42 +1,75 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Card, Button } from 'antd'
-import 'kindeditor/kindeditor-all';
-import 'kindeditor/kindeditor-all-min'
+import { deepTree } from '@/utils/publicMethods'
 
 const HtmlFunctionTags = () => {
-    const editorRef = useRef(null);
-
-    // 初始化编辑器
-    useEffect(() => {
-        const options = {
-            items: ['undo', 'redo', '|', 'preview', 'template', 'cut', 'copy'],
-            width: '500px',
-            minHeight: '500px',
-            resizeType: 'vertical',
-            // zIndex: 1,
-        }
-        if (editorRef.current) {
-            window.KindEditor.create(editorRef.current,options);
-        }
-    }, []);
     
     const handleClick = () => {
-        let obj1 = { a: 1, b: { c: 1 }, list: ['name', 'height'], func: () => { console.log('有内鬼，终止交易')} }
-        let obj1_copy = { ...obj1 }
+        let arr = [1,2,3,4,5,6,7,8,9,10];
         
-        console.log(obj1,'obj1')    // { a: 1, b: { c: 1 } }
-        console.log(obj1_copy,'obj1_copy')    // { a: 1, b: { c: 1 } }
+        for (let i = 0; i < arr.length; i++) {
+
+            const randomIndex = Math.round(Math.random() * (arr.length - 1 - i)) + i;
+
+            [arr[i], arr[randomIndex]] = [arr[randomIndex], arr[i]];
+        }
+
+        console.log(arr)
+    }
+
+    const handleTree = () => {
+        const arr = [
+            {
+                id: 2,
+                name: '部门B',
+                parentId: 0
+            },
+            {
+                id: 3,
+                name: '部门C',
+                parentId: 1
+            },
+            {
+                id: 1,
+                name: '部门A',
+                parentId: 2
+            },
+            {
+                id: 4,
+                name: '部门D',
+                parentId: 1
+            },
+            {
+                id: 5,
+                name: '部门E',
+                parentId: 2
+            },
+            {
+                id: 6,
+                name: '部门F',
+                parentId: 3
+            },
+            {
+                id: 7,
+                name: '部门G',
+                parentId: 2
+            },
+            {
+                id: 8,
+                name: '部门H',
+                parentId: 4
+            }
+        ]
+
+        const treeData = deepTree(arr,0)
+        console.log(treeData,'treeData');
+
     }
 
     return (
         <div>
             <Button onClick={handleClick}>测试</Button>
-            <div>
-                <p>kindeditor富文本编辑器</p>
-                <div>
-                    <textarea ref={editorRef}></textarea>
-                </div>
-            </div>
+            <Button onClick={handleTree}>数组转为树结构</Button>
         </div>
     )
 }
