@@ -24,7 +24,15 @@ const SortTreeList = () => {
 
     const checkChange = (checkedValues) => {
         console.log(checkedValues,'checkedValues');
-        const checkList = listData.filter(f => checkedValues.indexOf(f.id) !== -1)
+        let checkList:checkListType[] = []
+        const checks = checkeds.length ? checkeds.map(item => {
+            
+        }) : []
+        if(checkeds.length > 0){
+            
+        }else{
+            checkList = listData.filter(f => checkedValues.indexOf(f.id) !== -1)
+        }
         setCheckeds(checkList)
     }
 
