@@ -72,7 +72,23 @@ const HtmlFunctionTags = () => {
             <Button onClick={handleClick}>测试</Button>
             <Button onClick={handleTree}>数组转为树结构</Button>
             <div>
-                <SortTreeList />
+                <SortTreeList
+                    sortList={[
+                        {name: 'A', id: '123456'},
+                        {name: 'B', id: '456789'},
+                        {name: 'C', id: '789123'},
+                    ]}
+                />
+                <SortTreeList
+                    sortList={[]}
+                />
+                <SortTreeList
+                    sortList={[
+                        {name: '张三', id: 'dawdawd'},
+                        {name: '李四', id: 'dawddwa'},
+                        {name: '王五', id: 'jlkljlj'},
+                    ]}
+                />
             </div>
         </div>
     )
