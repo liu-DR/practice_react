@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Card, Button } from 'antd'
 import { deepTree } from '@/utils/publicMethods'
+import SortTreeList from './components/SortTreeListComponent'
 
 const HtmlFunctionTags = () => {
     
@@ -70,6 +71,9 @@ const HtmlFunctionTags = () => {
         <div>
             <Button onClick={handleClick}>测试</Button>
             <Button onClick={handleTree}>数组转为树结构</Button>
+            <div>
+                <SortTreeList />
+            </div>
         </div>
     )
 }
