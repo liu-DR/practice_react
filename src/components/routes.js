@@ -15,7 +15,7 @@ const Home = loadable(() => import('../pages/Home'))
 import TableGuide from '@/pages/assembly/guide/TableGuide'
 import CardForm from '@/pages/assembly/cardForm/CardForm'
 import CheckTag from '@/pages/assembly/checkTag/CheckTag'
-
+import EditTable from '@/pages/assembly/editTable/index'
 // css样式功能
 import CssFunctionFile from '@/pages/cssFunctionFile'
 
@@ -71,6 +71,13 @@ const routes = [
                 element: <BraftEditor />,
                 title: '富文本编辑器',
                 key: 'braft-editor',
+                meta:{}
+            },
+            {
+                path: '/assembly/editTable',
+                element: <EditTable />,
+                title: '可编辑表格',
+                key: 'editTable',
                 meta:{}
             },
         ]

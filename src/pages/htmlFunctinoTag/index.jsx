@@ -1,23 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { connect } from 'react-redux'
+import { Modals } from '@/modals'
 import { Card, Button } from 'antd'
 import { deepTree } from '@/utils/publicMethods'
 import SortTreeList from './components/SortTreeListComponent'
+import { DocumentEditor } from "@onlyoffice/document-editor-react";
 
-const HtmlFunctionTags = () => {
+const HtmlFunctionTags = (props) => {
     
-    const handleClick = () => {
-        let arr = [1,2,3,4,5,6,7,8,9,10];
-        
-        for (let i = 0; i < arr.length; i++) {
-
-            const randomIndex = Math.round(Math.random() * (arr.length - 1 - i)) + i;
-
-            [arr[i], arr[randomIndex]] = [arr[randomIndex], arr[i]];
-        }
-
-        console.log(arr)
-    }
-
     const handleTree = () => {
         const arr = [
             {
@@ -66,6 +56,39 @@ const HtmlFunctionTags = () => {
         console.log(treeData,'treeData');
 
     }
+    // http://www.file.cn/a.docx
+
+    const handleClick = () => {
+        let arr = [1,2,3,4,5,6,7,8,9,10];
+        
+        for (let i = 0; i < arr.length; i++) {
+
+            const randomIndex = Math.round(Math.random() * (arr.length - 1 - i)) + i;
+
+            [arr[i], arr[randomIndex]] = [arr[randomIndex], arr[i]];
+        }
+
+        const obj = {
+            name: 'a',
+            age: 'b',
+            height: '150',
+            func: handleTree
+        }
+        let copyObj = {}
+
+        Object.keys(obj).forEach(item => {
+            copyObj = {
+                ...copyObj,
+                [`data-${item}`]: obj[item]
+            }
+        })
+        console.log(copyObj,'copyObj');
+        // copyObj[func]
+    }
+
+    const onDocumentReady = function (event) {
+        console.log("文档加载完成",event);
+    };
 
     return (
         <div>
@@ -90,8 +113,49 @@ const HtmlFunctionTags = () => {
                     ]}
                 />
             </div>
+            <input type="text" init="22"/>
+            <div style={{ padding: 20 }}>
+                <DocumentEditor
+                    id="docxEditor"
+                    documentServerUrl="http://documentserver/"
+                    config={{
+                        "document": {
+                            "fileType": "docx",
+                            "key": "Khirz6zTPdfd7",
+                            "title": "Example Document Title.docx",
+                            "url": "http://www.file.cn/a.docx"
+                        },
+                        // document: '',
+                        'options': {
+                            // 'type': 'desktop',
+                            'mode': 'edit',
+                            'height': '100%',
+                            'width': '100%',
+                        },
+                        "documentType": "word",
+                        "editorConfig": {
+                        "callbackUrl": "https://example.com/url-to-callback.ashx"
+                        }
+                    }}
+                    events_onDocumentReady={onDocumentReady}
+                />
+            </div>
+
+            <div>
+                <Button onClick={async () => {
+                    const { GetCloudMusic } = props
+                    const result = await GetCloudMusic()
+                    console.log(result,'result');
+                }}>测试request</Button>
+            </div>
         </div>
     )
 }
 
-export default HtmlFunctionTags
+const {
+    GetCloudMusic
+} = Modals.OpenSourceModels.actions
+
+export default connect(null,{
+    GetCloudMusic
+})(HtmlFunctionTags)

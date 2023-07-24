@@ -90,3 +90,15 @@ export const deepTree = (data, parentId) => {
     });
     return roots;
 }
+
+// 区分本地开发与线上环境
+// export const isProductNet = () => {
+//     const hostName = window.location.hostname
+
+//     // 暂时辨别本地
+//     const isProductHost = [
+//         'localhost'
+//     ]
+
+//     return isProductHost.indexOf(hostName)
+// }

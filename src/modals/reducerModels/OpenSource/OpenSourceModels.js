@@ -1,4 +1,5 @@
-import axios from '../../../utils/axios'
+// import axios from '../../../utils/axios'
+import request from '@/utils/axios'
 
 const OpenSourceModels = {
     state: {
@@ -17,27 +18,29 @@ const OpenSourceModels = {
          */
         getAvatar: (params) => {
             console.log(params,'params');
-            return axios({
+            return request({
                 url: `https://api.multiavatar.com/4645646/${params}?apikey=OoEq2Qdshzxk17`,
                 method: 'GET'
             })
         },
         getCloudMusic: (params) => {
-            return axios({
-                url: `/cloud/top/playlist?limit=10&order=new`,
+            return request({
+                url: `/cloud/cloudsearch?keywords=海阔天空`,
                 method: 'GET'
             })
         },
     },
     actions: {
-        GetAvatar: (params) => (dispatch) => {
-            return OpenSourceModels.apis.getAvatar(params).then(res => {
-                dispatch({
+        GetAvatar: (params) => async (dispatch) => {
+            const result = await OpenSourceModels.apis.getAvatar(params)
+            console.log(result,'result');
+            /**
+             * dispatch({
                     type: 'GETAVATAR',
                     payload: res
                 })
                 return res
-            })
+             */
         },
         GetCloudMusic: (params) => (dispatch) => {
             return OpenSourceModels.apis.getCloudMusic().then(res => {
@@ -45,7 +48,6 @@ const OpenSourceModels = {
                     type: 'GETCLOUDMUSIC',
                     payload: res
                 })
-                console.log(res,'res')
                 return res
             })
         }

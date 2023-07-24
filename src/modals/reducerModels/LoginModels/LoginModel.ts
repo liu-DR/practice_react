@@ -1,4 +1,4 @@
-import axios from '@/utils/axios'
+// import request from '@/utils/axios'
 import { v4 as uuidv4 } from 'uuid'
 
 const LoginModel = {
