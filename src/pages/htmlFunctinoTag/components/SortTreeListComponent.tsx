@@ -35,14 +35,10 @@ const SortTreeList = (props) => {
     }
     // 下移
     const onMoveDown = (item,index) => {
-        console.log(item,index,'onMoveDown')
         let newListData: sortListType[] = [...sortListData]
 
         setTimeout(() => {
             [newListData[index], newListData[index + 1]]  = [newListData[index + 1], newListData[index]]
-
-            console.log(newListData,'newListData');
-            
             setSortListData(newListData)
         },300)
     }
@@ -66,9 +62,25 @@ const SortTreeList = (props) => {
                             <li key={item.id} className={styles.sortList_li}>
                                 <span style={{ cursor: 'pointer', padding: '0 10px' }} >{item.name}</span>
                                 <Space>
-                                    <Button style={{ cursor: 'pointer', padding: '0 10px' }} disabled={index===0} onClick={() => onMoveUp(item,index)}><VerticalAlignTopOutlined /></Button>
-                                    <Button style={{ cursor: 'pointer', padding: '0 10px' }} disabled={index===sortListData.length -1} onClick={() => onMoveDown(item,index)}><VerticalAlignBottomOutlined /></Button>
-                                    <Button style={{ cursor: 'pointer', padding: '0 10px' }} disabled={index===0} onClick={() => onMoveTopping(item,index)}>置顶</Button>
+                                    <Button
+                                        style={{ cursor: 'pointer', padding: '0 10px' }}
+                                        disabled={index===0}
+                                        onClick={() => onMoveUp(item,index)}
+                                    >
+                                        <VerticalAlignTopOutlined />
+                                    </Button>
+                                    <Button
+                                        style={{ cursor: 'pointer', padding: '0 10px' }}
+                                        disabled={index===sortListData.length -1}
+                                        onClick={() => onMoveDown(item,index)}
+                                    >
+                                        <VerticalAlignBottomOutlined />
+                                    </Button>
+                                    <Button
+                                        style={{ cursor: 'pointer', padding: '0 10px' }}
+                                        disabled={index===0}
+                                        onClick={() => onMoveTopping(item,index)}
+                                    >置顶</Button>
                                 </Space>
                             </li>
                         ))
