@@ -1,6 +1,7 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 let mainWindow = null;
+
 //判断命令行脚本的第二参数是否含--debug
 const debug = /--debug/.test(process.argv[2]);
 function makeSingleInstance () {
@@ -13,16 +14,18 @@ function makeSingleInstance () {
         }
     })
 }
+
 function createWindow () {
     const windowOptions = {
-        width: 400,
-        height: 300,
-        frame:false,
+        width: 800,
+        height: 500,
+        frame: false,
     };
     mainWindow = new BrowserWindow(windowOptions);
     mainWindow.loadURL("http://localhost:8085/");
     // mainWindow.loadURL(path.join('file://', __dirname, '/build/index.html'));
     //接收渲染进程的信息
+
     const ipc = require('electron').ipcMain;
     ipc.on('min', function () {
         mainWindow.minimize();
@@ -33,6 +36,7 @@ function createWindow () {
     ipc.on("login",function () {
         mainWindow.maximize();
     });
+    
     //如果是--debug 打开开发者工具，窗口最大化，
     if (debug) {
         mainWindow.webContents.openDevTools();
