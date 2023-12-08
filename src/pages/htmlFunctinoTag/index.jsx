@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { connect } from 'react-redux'
-import { Modals } from '@/modals'
+import { openSourceModels } from '@/modals'
 import { Card, Button } from 'antd'
 import { deepTree } from '@/utils/publicMethods'
 import SortTreeList from './components/SortTreeListComponent'
@@ -154,7 +154,7 @@ const HtmlFunctionTags = (props) => {
 
 const {
     GetCloudMusic
-} = Modals.OpenSourceModels.actions
+} = openSourceModels.actions
 
 export default connect(null,{
     GetCloudMusic

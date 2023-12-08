@@ -13,7 +13,6 @@ const instance = axios.create({
 
 // 请求拦截器
 instance.interceptors.request.use(config=>{
-    console.log(config,'config');
     // 暂时用不上
     // const { token } = window.localStorage.getItem('formation') || window.sessionStorage.getItem('formation');
 
@@ -41,7 +40,6 @@ instance.interceptors.request.use(config=>{
 
 // 响应拦截器
 instance.interceptors.response.use(response=>{
-    console.log(response,'response');
     if(response.status) {
         switch (response.status) {
             case 200:
@@ -63,7 +61,6 @@ instance.interceptors.response.use(response=>{
     return Promise.reject(error)
 })
 
-// export default instance
 
 export default ({url, method = 'GET', params = {}}) => {
 

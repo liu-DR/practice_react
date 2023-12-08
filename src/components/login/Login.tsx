@@ -9,7 +9,7 @@ import {
     Col,
     message,
 } from 'antd'
-import { Modals } from '@/modals/index'
+import { loginModel } from '@/modals'
 import styles from '../index.less'
 
 const {Password} = Input
@@ -144,7 +144,7 @@ const mapStateToProps = (state, props) => {
 
 const {
     loginActions
-} = Modals.LoginModels.actions
+} = loginModel.actions
 
 
 

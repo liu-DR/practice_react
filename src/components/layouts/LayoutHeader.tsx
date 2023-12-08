@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { connect } from 'react-redux'
-import { Modals } from '@/modals/index'
+import { openSourceModels } from '@/modals'
 import {useNavigate} from 'react-router-dom'
 import { Buffer } from 'buffer';
 import {
@@ -13,8 +13,8 @@ import styles from '../index.less'
 
 const LayoutHeader = (props) => {
     const navigate = useNavigate()
-    const { GetAvatar } = props
-    const [avater,setAvater] = useState<string>('')
+    const { GetAvatar, avatarImg } = props
+
     const [userName, setUserName] = useState<string>('')
 
     useEffect(() => {
@@ -23,25 +23,26 @@ const LayoutHeader = (props) => {
         if(Object.keys(formation).length > 0){
             setUserName(formation?.userName)
         }
-        getHeadPortrait()
+        
     },[])
 
     // 头像转换处理
-    const getHeadPortrait = async () => {
-        const headImg = await GetAvatar(Math.round(Math.random() * 1000))
-        if(headImg){
-            const buffer = new Buffer(headImg)
-            setAvater(buffer.toString('base64'))
-        }
+    const getHeadPortrait = () => {
+        GetAvatar(Math.round(Math.random() * 1000))
     }
-
+    
+    useEffect(() => {
+        getHeadPortrait()
+    },[])
+    
+    
     return (
         <div className={styles.layoutHeader}>
             <div className={styles.headPortrait}>
                 <span>{userName}</span>
-                {avater
+                {avatarImg
                     ?
-                        <img src={`data:image/svg+xml;base64,${avater}`} alt="" />
+                        <img src={`data:image/svg+xml;base64,${new Buffer(avatarImg).toString('base64')}`} alt="" />
                     :   <div style={{ padding: '0 20px', height: 'inherit', lineHeight: '52px' }}><Spin /></div>
                 }
             </div>
@@ -59,15 +60,18 @@ const LayoutHeader = (props) => {
 
 
 const mapStateToProps = (state, props) => {
+    const {
+        getAvatarImg
+    } = openSourceModels.selectors(state)
 
     return {
-
+        avatarImg: getAvatarImg()
     }
 }
 
 const {
     GetAvatar
-} = Modals.OpenSourceModels.actions
+} = openSourceModels.actions
 
 
 export default connect(mapStateToProps,{

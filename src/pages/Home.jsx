@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import {
     Button
 } from 'antd'
-import { Modals } from '@/modals'
+import { openSourceModels } from '@/modals'
 
 const Home = (props) => {
     const navigate = useNavigate()
@@ -34,7 +34,7 @@ const mapStateToProps = (state, props) => {
 
 const {
     GetCloudMusic
-} = Modals.OpenSourceModels.actions
+} = openSourceModels.actions
 
 
 export default connect(mapStateToProps,{

@@ -1,4 +1,3 @@
-// import axios from '../../../utils/axios'
 import request from '@/utils/axios'
 
 const OpenSourceModels = {
@@ -17,7 +16,6 @@ const OpenSourceModels = {
          *  个人秘钥： apikey=OoEq2Qdshzxk17
          */
         getAvatar: (params) => {
-            console.log(params,'params');
             return request({
                 url: `https://api.multiavatar.com/4645646/${params}?apikey=OoEq2Qdshzxk17`,
                 method: 'GET'
@@ -31,16 +29,13 @@ const OpenSourceModels = {
         },
     },
     actions: {
-        GetAvatar: (params) => async (dispatch) => {
-            const result = await OpenSourceModels.apis.getAvatar(params)
-            console.log(result,'result');
-            /**
-             * dispatch({
+        GetAvatar: (params) => (dispatch) => {
+            OpenSourceModels.apis.getAvatar(params).then(res => {
+                dispatch({
                     type: 'GETAVATAR',
                     payload: res
                 })
-                return res
-             */
+            })
         },
         GetCloudMusic: (params) => (dispatch) => {
             return OpenSourceModels.apis.getCloudMusic().then(res => {
@@ -58,7 +53,6 @@ const OpenSourceModels = {
             switch (type) {
                 case 'GETAVATAR':
                     return payload
-                    break;
                 default:
                     break;
             }
