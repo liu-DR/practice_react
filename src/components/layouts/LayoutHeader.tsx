@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { connect } from 'react-redux'
-import { Modals } from '@/modals/index'
+import { openSourceModels } from '@/modals'
 import {useNavigate} from 'react-router-dom'
 import { Buffer } from 'buffer';
 import {
@@ -13,28 +13,38 @@ import styles from '../index.less'
 
 const LayoutHeader = (props) => {
     const navigate = useNavigate()
-    const { GetAvatar } = props
-    const [avater,setAvater] = useState<string>('')
+    const { GetAvatar, avatarImg } = props
+
+    const [userName, setUserName] = useState<string>('')
 
     useEffect(() => {
-        getHeadPortrait()
+        // 获取当前登录用户名
+        const formation = JSON.parse(localStorage.getItem('formation') || '{}')
+        if(Object.keys(formation).length > 0){
+            setUserName(formation?.userName)
+        }
+        
     },[])
 
     // 头像转换处理
-    const getHeadPortrait = async () => {
-        const headImg = await GetAvatar(Math.round(Math.random() * 1000))
-        console.log(headImg,'打印')
-        if(headImg){
-            const buffer = new Buffer(headImg)
-            setAvater(buffer.toString('base64'))
-        }
+    const getHeadPortrait = () => {
+        GetAvatar(Math.round(Math.random() * 1000))
     }
-
+    
+    useEffect(() => {
+        getHeadPortrait()
+    },[])
+    
+    
     return (
         <div className={styles.layoutHeader}>
             <div className={styles.headPortrait}>
-                <span>头部信息</span>
-                {avater ? <img src={`data:image/svg+xml;base64,${avater}`} alt="" /> : <Spin />}
+                <span>{userName}</span>
+                {avatarImg
+                    ?
+                        <img src={`data:image/svg+xml;base64,${new Buffer(avatarImg).toString('base64')}`} alt="" />
+                    :   <div style={{ padding: '0 20px', height: 'inherit', lineHeight: '52px' }}><Spin /></div>
+                }
             </div>
             <Button
                 onClick={() => {
@@ -50,15 +60,18 @@ const LayoutHeader = (props) => {
 
 
 const mapStateToProps = (state, props) => {
+    const {
+        getAvatarImg
+    } = openSourceModels.selectors(state)
 
     return {
-
+        avatarImg: getAvatarImg()
     }
 }
 
 const {
     GetAvatar
-} = Modals.OpenSourceModels.actions
+} = openSourceModels.actions
 
 
 export default connect(mapStateToProps,{

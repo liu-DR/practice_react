@@ -1,16 +1,25 @@
-import React from 'react'
-import './index.css'
+import React, { useState } from 'react'
+import { Card, Button } from 'antd';
+import styles from './index.less'
+import Loading from '@/components/loading'
 
 const CssFunctionFiles  = () => {
+    const [loading, setLoading] = useState<boolean>(false)
+    
 
     return (
         <div>
-            <h2>css功能样式文件</h2>
-            <br />
-            <div style={{ padding: '0 20px' }}>
-                <h1>css添加loading效果</h1>
-                <span className='data-loading'>loading</span>
-            </div>
+            <Card title="loading效果">
+                <Loading title='确定' loading={loading} style={{ color: '#1890ff' }}/>
+                <div>
+                    <Button onClick={() => setLoading(!loading)}>{loading ? '加载中' : '加载结束'}</Button>
+                </div>
+            </Card>
+            <Card title="旋转小球">
+                <div className={styles.box1}>
+                    
+                </div>
+            </Card>
         </div>
     )
 }
