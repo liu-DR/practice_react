@@ -20,6 +20,8 @@ const Home = (props) => {
             <h2>首页</h2>
             <Button onClick={() => navigate('/assembly/guide')}>前往Guide组件</Button>
             <Button onClick={onClick}>点击获取热门歌单分类</Button>
+
+            {/* <AgGridfEditTable /> */}
         </div>
     )
 }

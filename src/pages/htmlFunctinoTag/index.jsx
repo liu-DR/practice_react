@@ -4,7 +4,7 @@ import { openSourceModels } from '@/modals'
 import { Card, Button } from 'antd'
 import { deepTree } from '@/utils/publicMethods'
 import SortTreeList from './components/SortTreeListComponent'
-import { DocumentEditor } from "@onlyoffice/document-editor-react";
+import EditTable from '@/components/EditTableDetails'
 
 const HtmlFunctionTags = (props) => {
     
@@ -92,7 +92,7 @@ const HtmlFunctionTags = (props) => {
 
     return (
         <div>
-            <Button onClick={handleClick}>测试</Button>
+            {/* <Button onClick={handleClick}>测试</Button>
             <Button onClick={handleTree}>数组转为树结构</Button>
             <div>
                 <SortTreeList
@@ -114,32 +114,6 @@ const HtmlFunctionTags = (props) => {
                 />
             </div>
             <input type="text" init="22"/>
-            <div style={{ padding: 20 }}>
-                <DocumentEditor
-                    id="docxEditor"
-                    documentServerUrl="http://documentserver/"
-                    config={{
-                        "document": {
-                            "fileType": "docx",
-                            "key": "Khirz6zTPdfd7",
-                            "title": "Example Document Title.docx",
-                            "url": "http://www.file.cn/a.docx"
-                        },
-                        // document: '',
-                        'options': {
-                            // 'type': 'desktop',
-                            'mode': 'edit',
-                            'height': '100%',
-                            'width': '100%',
-                        },
-                        "documentType": "word",
-                        "editorConfig": {
-                        "callbackUrl": "https://example.com/url-to-callback.ashx"
-                        }
-                    }}
-                    events_onDocumentReady={onDocumentReady}
-                />
-            </div>
 
             <div>
                 <Button onClick={async () => {
@@ -147,6 +121,10 @@ const HtmlFunctionTags = (props) => {
                     const result = await GetCloudMusic()
                     console.log(result,'result');
                 }}>测试request</Button>
+            </div> */}
+            <p>ali-react-table可编辑表格实践</p>
+            <div>
+                <EditTable />
             </div>
         </div>
     )

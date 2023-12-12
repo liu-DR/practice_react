@@ -1,10 +1,17 @@
-// 转换千分位
+/**
+ * 转换千分位，保留小数位
+ * @param {*} v：需转换的值 
+ * @param {*} isNum：是否保留小数位
+ * @param {*} dio：保留小数位数
+ * @returns 
+ */
 export const numberFormatter = (v, isNum, dio) => {
     if(!v){
         return null
     }
     let [value,point] = v && v.toString().split('.')
     value = value && Number(value.replace(/,/g, ''))
+
     if(Number(value) !== 'NaN'){
         value = `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
     }
@@ -91,14 +98,25 @@ export const deepTree = (data, parentId) => {
     return roots;
 }
 
-// 区分本地开发与线上环境
-// export const isProductNet = () => {
-//     const hostName = window.location.hostname
+/**
+ * 获取同一数组中，某一字段值相同的起始和结束的数据位置
+ * @param {* -- 对象数组} arr 
+ * @param {* -- 字段} field 
+ * @param {* -- 对应值} value 
+ * @returns 
+ */
+const findRange = (arr, field, value) => {
+    let startIndex = -1;
+    let endIndex = -1;
 
-//     // 暂时辨别本地
-//     const isProductHost = [
-//         'localhost'
-//     ]
+    for(let i = 0; i < arr.length; i++) {
+        if(arr[i][field] === value) {
+            if(startIndex === -1) {
+                startIndex = i
+            }
+            endIndex = i;
+        }
+    }
 
-//     return isProductHost.indexOf(hostName)
-// }
+    return [startIndex, endIndex]
+}
