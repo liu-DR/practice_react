@@ -1,0 +1,37 @@
+.box1{
+    width: 100px;
+    height: 100px;
+    background: transparent;
+    border: 3px solid #95f887;
+    border-radius: 50%;
+    position: relative;
+    /**
+    * round：动画名称
+    * 3s：完成一次动画的时间
+    * linear：使当前动画运动速度呈线性匀速运动
+    * infinite：动画无限循环
+    */
+    animation: round 3s infinite linear;
+}
+.box1::before{
+    content: "";
+    width: 15px;
+    height: 15px;
+    background: #ffd950;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+// 动画配置
+@keyframes round {
+    0% {
+        rotate: 0deg;   // 顺时针
+        // rotate: 360deg;  // 逆时针
+    }
+    100% {
+        // rotate: 0deg;
+        rotate: 360deg;
+    }
+}

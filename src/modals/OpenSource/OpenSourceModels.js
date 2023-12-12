@@ -1,4 +1,4 @@
-import axios from '../../../utils/axios'
+import request from '@/utils/axios'
 
 const OpenSourceModels = {
     state: {
@@ -16,18 +16,31 @@ const OpenSourceModels = {
          *  个人秘钥： apikey=OoEq2Qdshzxk17
          */
         getAvatar: (params) => {
-            console.log(params,'params');
-            return axios({
+            return request({
                 url: `https://api.multiavatar.com/4645646/${params}?apikey=OoEq2Qdshzxk17`,
+                method: 'GET'
+            })
+        },
+        getCloudMusic: (params) => {
+            return request({
+                url: `/cloud/cloudsearch?keywords=海阔天空`,
                 method: 'GET'
             })
         },
     },
     actions: {
         GetAvatar: (params) => (dispatch) => {
-            return OpenSourceModels.apis.getAvatar(params).then(res => {
+            OpenSourceModels.apis.getAvatar(params).then(res => {
                 dispatch({
                     type: 'GETAVATAR',
+                    payload: res
+                })
+            })
+        },
+        GetCloudMusic: (params) => (dispatch) => {
+            return OpenSourceModels.apis.getCloudMusic().then(res => {
+                dispatch({
+                    type: 'GETCLOUDMUSIC',
                     payload: res
                 })
                 return res
@@ -40,7 +53,6 @@ const OpenSourceModels = {
             switch (type) {
                 case 'GETAVATAR':
                     return payload
-                    break;
                 default:
                     break;
             }
