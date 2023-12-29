@@ -23,8 +23,10 @@ const OpenSourceModels = {
         },
         getCloudMusic: (params) => {
             return request({
-                url: `/cloud/cloudsearch?keywords=海阔天空`,
-                method: 'GET'
+                // url: `/cloud/cloudsearch?keywords=海阔天空`,
+                url: '/chat/auth/login',
+                method: 'POST',
+                params
             })
         },
     },
@@ -38,7 +40,7 @@ const OpenSourceModels = {
             })
         },
         GetCloudMusic: (params) => (dispatch) => {
-            return OpenSourceModels.apis.getCloudMusic().then(res => {
+            return OpenSourceModels.apis.getCloudMusic(params).then(res => {
                 dispatch({
                     type: 'GETCLOUDMUSIC',
                     payload: res

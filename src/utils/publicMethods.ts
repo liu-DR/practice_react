@@ -12,7 +12,7 @@ export const numberFormatter = (v, isNum, dio) => {
     let [value,point] = v && v.toString().split('.')
     value = value && Number(value.replace(/,/g, ''))
 
-    if(Number(value) !== 'NaN'){
+    if(!Number.isNaN(Number(value))){
         value = `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
     }
 
@@ -37,7 +37,7 @@ export const deepCopy = (data) => {
     if(data instanceof Object){
         // 判断是否是数组
         if(Array.isArray(data)){
-            let result = []
+            let result: any = []
             data.forEach(item => {
                 result.push(deepCopy(item))
             })
@@ -65,7 +65,11 @@ export const disruptSorting = (arr) => {
 }
 
 /**
- *[{
+ *  数组转为树结构(递归)
+ * @param {*} data 
+ * @param {*} parentId 
+ * @returns 
+ * [{
         id: 2,
         name: '部门B',
         parentId: 0
@@ -81,9 +85,8 @@ export const disruptSorting = (arr) => {
         parentId: 2
     }]} array 
  */
-// 数组转为树结构(递归)
 export const deepTree = (data, parentId) => {
-    let roots = [];
+    let roots: any = [];
     
     // 遍历数据数组
     data.forEach(function(node) {
@@ -105,7 +108,7 @@ export const deepTree = (data, parentId) => {
  * @param {* -- 对应值} value 
  * @returns 
  */
-const findRange = (arr, field, value) => {
+export const findRange = (arr, field, value) => {
     let startIndex = -1;
     let endIndex = -1;
 
@@ -119,4 +122,28 @@ const findRange = (arr, field, value) => {
     }
 
     return [startIndex, endIndex]
+}
+
+/**
+ * 实现文件(blob流)下载
+ * @param {* -- 文件流} data 
+ * @param {* -- 文件名} fileName 
+ */
+export const downLoadBlobFile = async (data: string, fileName: string) => {
+    let blob: string | Blob = data;
+
+    if(typeof data === 'string') {
+        blob = new Blob([data]);
+    }
+
+    let blobUrl = window.URL.createObjectURL(blob as Blob);
+    let formatFileName = fileName || '模板文件.xlsx';
+
+    // 创建下载对象
+    const a = document.createElement('a');
+    a.download = formatFileName;
+    a.setAttribute('target', '_blank');
+    a.href = blobUrl;
+    a.click();
+    a.remove();
 }

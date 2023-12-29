@@ -7,7 +7,6 @@ import {
 
 // 创建实例
 const instance = axios.create({
-    // baseURL: 'http://localhost:8085',
     timeout: 15000,  // 毫秒
 })
 
@@ -63,12 +62,11 @@ instance.interceptors.response.use(response=>{
 
 
 export default ({url, method = 'GET', params = {}}) => {
-
     let uri = ''
     const environment = process.env.NODE_ENV || 'development';
     const proxys = proxy[environment]
 
-    let baseURL = window.location.host || 'http://localhost:8085'
+    let baseURL = window.location.host;
 
     // 暂时简单区分是否是全路径接口地址
     if(url.indexOf('http') !== -1) {
@@ -86,8 +84,11 @@ export default ({url, method = 'GET', params = {}}) => {
                 case '/cloud':
                     baseURL = proxys['/cloud']
                     break;
-                case '/api':
+                case '/chat':
+                    baseURL = proxys['/chat']
+                    break;
                 default:
+                    baseURL = 'http://localhost:8085'
                     break;
             }
             uri = group2

@@ -1,7 +1,6 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = function (app) {
-    console.log(app,'111111');
     // 示例代理文件1
     app.use(
         '/cloud',

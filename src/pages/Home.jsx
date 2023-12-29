@@ -11,7 +11,10 @@ const Home = (props) => {
 
     const onClick = async () => {
         const { GetCloudMusic } = props
-        const data = await GetCloudMusic()
+        const data = await GetCloudMusic({
+            name: '张三',
+            password: '123456'
+        })
         console.log(data,'data')
     }
 

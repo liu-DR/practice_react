@@ -4,7 +4,6 @@ import { openSourceModels } from '@/modals'
 import { Card, Button } from 'antd'
 import { deepTree } from '@/utils/publicMethods'
 import SortTreeList from './components/SortTreeListComponent'
-import EditTable from '@/components/EditTableDetails'
 
 const HtmlFunctionTags = (props) => {
     
@@ -122,10 +121,6 @@ const HtmlFunctionTags = (props) => {
                     console.log(result,'result');
                 }}>测试request</Button>
             </div> */}
-            <p>ali-react-table可编辑表格实践</p>
-            <div>
-                <EditTable />
-            </div>
         </div>
     )
 }

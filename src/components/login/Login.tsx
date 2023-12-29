@@ -10,7 +10,7 @@ import {
     message,
 } from 'antd'
 import { loginModel } from '@/modals'
-import styles from '../index.less'
+import styles from './index.less'
 
 const {Password} = Input
 
