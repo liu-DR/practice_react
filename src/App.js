@@ -3,7 +3,7 @@ import { Provider } from 'react-redux'
 import {
   HashRouter,
 } from 'react-router-dom'
-import store from './modals/reducer'
+import { store } from './modals/reducer'
 import 'antd/dist/antd.min.css';
 import Route from './components/Authority.tsx'
 import 'ag-grid-community/styles/ag-grid.css'

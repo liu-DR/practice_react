@@ -9,12 +9,13 @@ import {
     Col,
     message,
 } from 'antd'
-import { loginModel } from '@/modals'
+import { UserInfoModels } from '@/modals/reducer'
 import styles from './index.less'
 
 const {Password} = Input
 
 const Login = (props) => {
+    const { userInfo, loginActions } = props
     const navigate = useNavigate()
     const [isLogin, setIsLogin] = useState<boolean>(true)
     const [userName, setUserName] = useState<string>('')
@@ -54,8 +55,6 @@ const Login = (props) => {
 
     // 登录
     const submit = async () => {
-        const { loginActions } = props
-
         if(!(userName && password)){
             if(!userName && !password){
                 setNameDisplay('block')
@@ -68,7 +67,6 @@ const Login = (props) => {
             return
         }else{
             const res = await loginActions({name:userName, password: password})
-
             if(res){
                 message.success('登录成功')
                 navigate('/home')
@@ -136,15 +134,18 @@ const Login = (props) => {
 
 
 const mapStateToProps = (state, props) => {
+    const {
+        getUserInfo
+    } = UserInfoModels.selectors(state)
 
     return {
-
+        userInfo: getUserInfo()
     }
 }
 
 const {
     loginActions
-} = loginModel.actions
+} = UserInfoModels.actions
 
 
 

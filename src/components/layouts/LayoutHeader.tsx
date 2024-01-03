@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { connect } from 'react-redux'
-import { openSourceModels } from '@/modals'
+import { OpenSourceModels } from '@/modals/reducer'
 import {useNavigate} from 'react-router-dom'
 import { Buffer } from 'buffer';
 import {
@@ -35,7 +35,6 @@ const LayoutHeader = (props) => {
         getHeadPortrait()
     },[])
     
-    
     return (
         <div className={styles.layoutHeader}>
             <div className={styles.headPortrait}>
@@ -62,7 +61,7 @@ const LayoutHeader = (props) => {
 const mapStateToProps = (state, props) => {
     const {
         getAvatarImg
-    } = openSourceModels.selectors(state)
+    } = OpenSourceModels.selectors(state)
 
     return {
         avatarImg: getAvatarImg()
@@ -71,7 +70,7 @@ const mapStateToProps = (state, props) => {
 
 const {
     GetAvatar
-} = openSourceModels.actions
+} = OpenSourceModels.actions
 
 
 export default connect(mapStateToProps,{

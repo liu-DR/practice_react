@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import {
     Button
 } from 'antd'
-import { openSourceModels } from '@/modals'
+import { OpenSourceModels, UserInfoModels } from '@/modals/reducer'
 
 const Home = (props) => {
     const navigate = useNavigate()
@@ -15,7 +15,6 @@ const Home = (props) => {
             name: '张三',
             password: '123456'
         })
-        console.log(data,'data')
     }
 
     return(
@@ -31,15 +30,18 @@ const Home = (props) => {
 
 
 const mapStateToProps = (state, props) => {
+    const {
+        getUserInfo
+    } = UserInfoModels.selectors(state);
 
     return {
-
+        userInfo: getUserInfo()
     }
 }
 
 const {
     GetCloudMusic
-} = openSourceModels.actions
+} = OpenSourceModels.actions
 
 
 export default connect(mapStateToProps,{

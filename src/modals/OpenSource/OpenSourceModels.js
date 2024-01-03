@@ -1,6 +1,7 @@
 import request from '@/utils/axios'
 
 const OpenSourceModels = {
+    name: 'OpenSourceModels',
     state: {
         AvatarImg: null
     },
@@ -23,10 +24,10 @@ const OpenSourceModels = {
         },
         getCloudMusic: (params) => {
             return request({
-                // url: `/cloud/cloudsearch?keywords=海阔天空`,
-                url: '/chat/auth/login',
+                url: `/cloud/cloudsearch?keywords=海阔天空`,
+                // url: '/chat/auth/login',
                 method: 'POST',
-                params
+                // params
             })
         },
     },
@@ -52,6 +53,9 @@ const OpenSourceModels = {
     reducer: {
         AvatarImg: (state = OpenSourceModels.state.AvatarImg, actions) => {
             const { type, payload } = actions
+
+            console.log(actions,'actions');
+
             switch (type) {
                 case 'GETAVATAR':
                     return payload

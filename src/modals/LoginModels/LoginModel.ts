@@ -1,8 +1,10 @@
 // import request from '@/utils/axios'
 import { v4 as uuidv4 } from 'uuid'
 import { userInfoType } from '../interface/modelInterface'
+import request from '@/utils/axios'
 
 const LoginModel = {
+    name: 'UserInfoModels',
     // 定义共享变量数据
     state: {
         userInfo: {}
@@ -18,37 +20,51 @@ const LoginModel = {
 
     // 接口apis
     apis: {
-
+        loginApi: (params) => request({
+            url: '/chat/auth/login',
+            method: 'POST',
+            params
+        }),
     },
 
     // actions
     actions: {
-        loginActions: (params:{name:string, password: string}) => (dispatch:any) => {
-            if(params.name === 'admin' && params.password === '123456'){
-                const formation = JSON.stringify({
-                    token: uuidv4(),
-                    expira: Date.now(),
-                    userName: params.name
-                })
-                localStorage.setItem('formation',formation)
-                return true
-            }else{
-                return false
-            }
-        },
+        loginActions: (params) => async (dispatch) => {
 
+            const res = await LoginModel.apis.loginApi(params)
+            console.log(res,';;wwwwww');
+            
+
+            dispatch({
+                type: 'USERINFO',
+                payload: res
+            })
+
+            return 
+            LoginModel.apis.loginApi(params).then(res => {
+                dispatch({
+                    type: 'USERINFO',
+                    payload: res
+                })
+                return res
+            })
+        }
     },
 
     // reducer
     reducer: {
-        userInfo: ( state = LoginModel.state.userInfo, actions:{ type: string, payload: userInfoType } ) => {
+        userInfo: (state = LoginModel.state.userInfo, actions) => {
             const { type, payload } = actions
-            switch (type){
+
+            console.log(payload,'payload');
+            
+            switch (type) {
                 case 'USERINFO':
-                    return payload;
+                    return payload
                 default:
-                    return state;
+                    break;
             }
+            return state
         }
     }
 
