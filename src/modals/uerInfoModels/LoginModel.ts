@@ -1,7 +1,6 @@
-// import request from '@/utils/axios'
-import { v4 as uuidv4 } from 'uuid'
 import { userInfoType } from '../interface/modelInterface'
 import request from '@/utils/axios'
+import { asyncActions } from '@/utils/publicMethods'
 
 const LoginModel = {
     name: 'UserInfoModels',
@@ -29,35 +28,18 @@ const LoginModel = {
 
     // actions
     actions: {
-        loginActions: (params) => async (dispatch) => {
-
-            const res = await LoginModel.apis.loginApi(params)
-            console.log(res,';;wwwwww');
-            
-
-            dispatch({
-                type: 'USERINFO',
-                payload: res
-            })
-
-            return 
-            LoginModel.apis.loginApi(params).then(res => {
-                dispatch({
-                    type: 'USERINFO',
-                    payload: res
-                })
-                return res
-            })
-        }
+        loginActions: (params) => (dispatch) => asyncActions({
+            api: LoginModel.apis.loginApi,
+            params,
+            dispatch,
+            actionType: 'USERINFO'
+        })
     },
 
     // reducer
     reducer: {
         userInfo: (state = LoginModel.state.userInfo, actions) => {
             const { type, payload } = actions
-
-            console.log(payload,'payload');
-            
             switch (type) {
                 case 'USERINFO':
                     return payload

@@ -1,13 +1,14 @@
 import request from '@/utils/axios'
+import { asyncActions } from '@/utils/publicMethods'
 
 const OpenSourceModels = {
     name: 'OpenSourceModels',
     state: {
-        AvatarImg: null
+        avatarImg: null
     },
     selectors: (state) => {
         const selectors = {
-            getAvatarImg: () => state.AvatarImg
+            getAvatarImg: () => state.avatarImg
         }
         return selectors
     },
@@ -16,30 +17,24 @@ const OpenSourceModels = {
          *  多头像调用接口   https://api.multiavatar.com/4645646 
          *  个人秘钥： apikey=OoEq2Qdshzxk17
          */
-        getAvatar: (params) => {
-            return request({
-                url: `https://api.multiavatar.com/4645646/${params}?apikey=OoEq2Qdshzxk17`,
-                method: 'GET'
-            })
-        },
+        getAvatar: (params) => request({
+            url: `https://api.multiavatar.com/4645646/${params}?apikey=OoEq2Qdshzxk17`,
+            method: 'GET'
+        }),
         getCloudMusic: (params) => {
             return request({
                 url: `/cloud/cloudsearch?keywords=海阔天空`,
-                // url: '/chat/auth/login',
                 method: 'POST',
-                // params
             })
         },
     },
     actions: {
-        GetAvatar: (params) => (dispatch) => {
-            OpenSourceModels.apis.getAvatar(params).then(res => {
-                dispatch({
-                    type: 'GETAVATAR',
-                    payload: res
-                })
-            })
-        },
+        GetAvatar: (params) => (dispatch) => asyncActions({
+            api:OpenSourceModels.apis.getAvatar,
+            params,
+            dispatch,
+            actionType: 'GETAVATAR'
+        }),
         GetCloudMusic: (params) => (dispatch) => {
             return OpenSourceModels.apis.getCloudMusic(params).then(res => {
                 dispatch({
@@ -51,18 +46,14 @@ const OpenSourceModels = {
         }
     },
     reducer: {
-        AvatarImg: (state = OpenSourceModels.state.AvatarImg, actions) => {
+        avatarImg: (state = OpenSourceModels.state.avatarImg, actions) => {
             const { type, payload } = actions
-
-            console.log(actions,'actions');
-
             switch (type) {
                 case 'GETAVATAR':
-                    return payload
+                    return payload.data;
                 default:
-                    break;
+                    return state;
             }
-            return state
         }
     }
 }

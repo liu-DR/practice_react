@@ -67,7 +67,8 @@ const Login = (props) => {
             return
         }else{
             const res = await loginActions({name:userName, password: password})
-            if(res){
+            
+            if(res && res.code === 200){
                 message.success('登录成功')
                 navigate('/home')
             }else{

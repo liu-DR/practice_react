@@ -14,7 +14,7 @@ import styles from '../index.less'
 const LayoutHeader = (props) => {
     const navigate = useNavigate()
     const { GetAvatar, avatarImg } = props
-
+    console.log(avatarImg,'avatarImg');
     const [userName, setUserName] = useState<string>('')
 
     useEffect(() => {
@@ -27,8 +27,10 @@ const LayoutHeader = (props) => {
     },[])
 
     // 头像转换处理
-    const getHeadPortrait = () => {
-        GetAvatar(Math.round(Math.random() * 1000))
+    const getHeadPortrait = async () => {
+        const data = await GetAvatar(Math.round(Math.random() * 1000))
+        console.log(data,'data');
+        
     }
     
     useEffect(() => {

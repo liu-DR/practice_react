@@ -1,9 +1,6 @@
 import axios from 'axios'
 import qs from 'qs'
 import proxy from './proxy'
-import {
-    message
-} from 'antd'
 
 // 创建实例
 const instance = axios.create({
@@ -39,25 +36,38 @@ instance.interceptors.request.use(config=>{
 
 // 响应拦截器
 instance.interceptors.response.use(response=>{
-    if(response.status) {
-        switch (response.status) {
-            case 200:
-                return response.data
-            case 401: 
-                // 未登录
-                message.error('请登录账号')
-                window.location.href = `${window.location.host}/#/login`
-                break;
-            case 403:
-                // token过期处理
-                break;
-            default:
-                message.error(response.data.msg)
-                return response.data
+    if(response.status === 200) {
+        return {
+            code: response.status,
+            data: typeof response.data === 'object' ? response.data.data : response.data,
+            message: '成功'
         }
     }
 }, error=>{
-    return Promise.reject(error)
+    let resp = {
+        code: error.response.status,
+        data: null,
+        message: '当前服务异常，请重试或联系管理员处理'
+    };
+    if(error.response) {
+        const { response } = error;
+        switch (response.status) {
+            case 401: 
+                // 未登录
+                resp.message = '暂无身份权限信息，请先登录账号!!!';
+                window.location.href = `${window.location.host}/#/login`;
+                break;
+            case 403:
+                // token过期处理
+                resp.message = 'token已过期，请重新登录';
+                break;
+            default:
+                resp.message = error.message
+                break;
+        }
+        resp.data = response
+    }
+    return resp
 })
 
 
@@ -95,10 +105,24 @@ export default ({url, method = 'GET', params = {}}) => {
         }
     }
 
-    return instance.request({
+    const request = instance.request({
         url: uri,
         method,
         baseURL,
         params
+    })
+
+    return new Promise((resolve, reject) => {
+        let resp = {}
+        request.then(res => {
+            resp = res;
+            resolve(res);
+        }).catch(err => {
+            reject(err);
+        }).finally(() => {
+            if(resp.code !== 200) {
+                throw new Error(resp.message)
+            }
+        })
     })
 }

@@ -3,8 +3,8 @@ import { applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { isEmpty } from 'lodash'
 
-import _OpenSourceModels from './OpenSource/OpenSourceModels'
-import _UserInfoModels from './LoginModels/LoginModel'
+import _OpenSourceModels from './openSourceModels/OpenSourceModels'
+import _UserInfoModels from './uerInfoModels/LoginModel'
 
 const allReducer = {};
 const allModels = {};
@@ -23,7 +23,7 @@ const wrapModel = (model, alias) => {
     modelWrapper.apis = model.apis;
 
     Object.keys(model.actions).forEach(key => {
-        actions[key] = function() {
+        actions[key] = function () {
             return model.actions[key](...arguments)
         }
     });

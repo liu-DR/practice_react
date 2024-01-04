@@ -1,3 +1,5 @@
+import { message } from "antd"
+
 /**
  * 转换千分位，保留小数位
  * @param {*} v：需转换的值 
@@ -146,4 +148,24 @@ export const downLoadBlobFile = async (data: string, fileName: string) => {
     a.href = blobUrl;
     a.click();
     a.remove();
+}
+
+/**
+ * 处理actoin调用
+ * @api api函数
+ * @param 请求参数
+ * @dispatch redux的dispatch函数
+ * @actionType redux的reducer函数的触发code
+ * @return 返回给到前台数据
+ */
+export const asyncActions = async ({api, params = {}, dispatch, actionType}) => {
+    const reponse = await api(params);
+    dispatch({
+        type: actionType,
+        payload: reponse
+    })
+    if(reponse.code !== 200) {
+        message.error(reponse.message)
+    }
+    return reponse
 }

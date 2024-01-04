@@ -32,7 +32,6 @@ const SiderMenu = (props) => {
 
     // 	刷新页面当前菜单项高亮
     useEffect(() => {
-        // console.log(pathname,'打印pathname')
         onClick({keyPath: [pathname]})
         setOpenKey([pathname.split('/')[1]])
         setKeys([pathname])
